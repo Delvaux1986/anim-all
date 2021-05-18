@@ -18,6 +18,8 @@
 1. Dashboard
     * vue-sidebar-menu
     * font-awasome
+    * vue-cal
+    * vue-axios
 
 ## When i started : 
 
