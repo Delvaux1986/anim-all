@@ -1,29 +1,54 @@
 <template>
-    <app-layout>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Dashboard
-            </h2>
-        </template>
-
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                    <welcome />
-                </div>
-            </div>
-        </div>
-    </app-layout>
+<sidebar-menu @toggle-collapse="onToggleCollapse" @item-click="onItemClick" />
+    <sidebar-menu :menu="menu" />
 </template>
 
 <script>
-    import AppLayout from '@/Layouts/AppLayout'
-    import Welcome from '@/Jetstream/Welcome'
+   import { SidebarMenu } from 'vue-sidebar-menu'
+    import 'vue-sidebar-menu/dist/vue-sidebar-menu.css'
+   
 
     export default {
         components: {
-            AppLayout,
-            Welcome,
+            SidebarMenu
         },
-    }
+        mounted(){
+            console.log(this.menu);
+        },
+        props : {
+
+        },
+        data() {
+            return {
+                menu: [
+                {
+                    header: 'Anim-All',
+                    hiddenOnCollapse: true
+                },
+                {
+                    href: '/animals',
+                    title: 'Pensionnaires',
+                    icon: 'fa fa-user'
+                },
+                // {
+                //     href: '/charts',
+                //     title: 'Charts',
+                //     icon: 'fa fa-chart-area',
+                //     child: [
+                //     {
+                //         href: '/charts/sublink',
+                //         title: 'Sub Link'
+                //     }
+                //     ]
+                // }
+                ]
+            }
+        },
+        methods: {
+                onToggleCollapse(collapsed) {},
+                onItemClick(event, item, node) {}
+            }
+        
+}
+    
 </script>

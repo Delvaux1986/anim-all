@@ -14,6 +14,11 @@
     <img src="https://raw.githubusercontent.com/devicons/devicon/7a4ca8aa871d6dca81691e018d31eed89cb70a76/icons/vuejs/vuejs-original-wordmark.svg" width="75" height="75" />
 </div>
 
+## Imported Compenents : 
+1. Dashboard
+    * vue-sidebar-menu
+    * font-awasome
+
 ## When i started : 
 
 > today we are 05/18/2021 
