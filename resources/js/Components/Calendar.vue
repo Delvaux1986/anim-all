@@ -1,7 +1,10 @@
 <template>
-    <vue-cal style="height: 70vh; width:80%;" class="bg-white text-black flex" today-button :time-from="8 * 60" :time-to="19 * 60" :events="this.events">
+
+    <vue-cal style="height: 70vh; width:80%;" class="bg-white text-black flex shadow-2xl" today-button :time-from="8 * 60" :time-to="19 * 60" :events="this.events">
         <template v-slot:today-button></template>
     </vue-cal>
+
+
 </template>
 
 <script>

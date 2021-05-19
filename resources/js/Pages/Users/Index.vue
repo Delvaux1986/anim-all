@@ -1,15 +1,18 @@
 <template>
     <div class="text-center bg-light text-pink my-4">
         <Menu></Menu>
-        <h1>A QUE COUCOU</h1>
+        <Table-users></Table-users>
     </div>
 </template>
 
 <script>
 import Menu from './../../Components/Menu'
+import TableUsers from './../../Components/TableUsers'
+
 export default {
-    components:{
+    components :{
         Menu,
+        TableUsers
     },
     setup() {
         
