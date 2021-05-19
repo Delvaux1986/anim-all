@@ -17,6 +17,6 @@ class Family extends Model
     ];
 
     public function animals(){
-        $this->hasMany(Animal::class);
+        return $this->hasMany(Animal::class);
     }
 }

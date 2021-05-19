@@ -20,6 +20,7 @@
     * font-awasome
     * vue-cal
     * vue-axios
+    * vue3-table-lite
 
 ## When i started : 
 

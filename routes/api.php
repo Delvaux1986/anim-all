@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/getAllTasks' , function (){
-    
     return Task::all();
+});
+Route::get('/getAllUsers', function (){
+    return User::with('role')->get();
+
 });

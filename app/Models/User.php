@@ -29,10 +29,13 @@ class User extends Authenticatable
         'email',
         'password',
         'role_id',
+        'workToday',
+        'startWork',
+        'endWork'
     ];
 
     public function role(){
-        $this->hasOne(Role::class);
+        return $this->belongsTo(Role::class);
     }
 
     /**

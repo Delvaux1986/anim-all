@@ -16,6 +16,6 @@ class Storie extends Model
     ];
 
     public function animal(){
-        $this->belongsTo(Animal::class);
+        return $this->belongsTo(Animal::class);
     }
 }

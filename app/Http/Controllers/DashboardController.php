@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Task;
+
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 

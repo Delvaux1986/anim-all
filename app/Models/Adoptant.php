@@ -17,6 +17,6 @@ class Adoptant extends Model
     ];
 
     public function animal(){
-        $this->hasMany(Animal::class);
+        return $this->hasMany(Animal::class);
     }
 }

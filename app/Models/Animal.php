@@ -21,18 +21,18 @@ class Animal extends Model
     ];
 
     public function specie(){
-        $this->belongsTo(Specie::class);
+        return $this->belongsTo(Specie::class);
     }
 
     public function stories(){
-        $this->hasMany(Storie::class);
+        return $this->hasMany(Storie::class);
     }
 
     public function adoptant(){
-        $this->hasOne(Adoptant::class);
+        return $this->hasOne(Adoptant::class);
     }
 
     public function cage(){
-        $this->hasOne(Cage::class);
+        return $this->hasOne(Cage::class);
     }
 }
