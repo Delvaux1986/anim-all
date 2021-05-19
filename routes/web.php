@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnimalController;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
@@ -20,4 +21,6 @@ use App\Http\Controllers\DashboardController;
 Route::get('/', [HomeController::class , 'index'])->name('home');
 
 Route::get('/dashboard', [DashboardController::class , 'index'])->middleware(['auth:sanctum', 'verified'])->name('dashboard');
+Route::get('/animals' , [AnimalController::class , 'index'])->middleware(['auth:sanctum', 'verified'])->name('animals.index');
+
 

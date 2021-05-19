@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
     public function index(){
-        return Inertia::render('Home/Index');
+        return Inertia::render('ClientSide/Index');
     }
 }
