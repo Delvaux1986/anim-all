@@ -1,7 +1,10 @@
 <template>
-    <div class="text-center bg-light text-pink my-4">
+    <div class="w-screen  h-screen bg-white">
         <Menu></Menu>
-        <h1>A QUE COUCOU</h1>
+        <div v-if="$page.props.flash.success" class="flashSucces">
+            {{ $page.props.flash.success }}
+        </div>
+        <h2 class="text-pink text-3xl py-12 uppercase font-extrabold text-center">Pensionnaires</h2>
         <TableAnimals :role="role"></TableAnimals>
     </div>
 </template>
@@ -21,7 +24,21 @@ export default {
         role : Number
     },
     mounted(){
-        console.log(this.role)
+        
     }
 }
 </script>
+
+<style>
+    .flashSucces{
+        display:flex;
+        width:100%;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 5px 15px;
+        font-size: 28px;
+        color:#BA455A;
+        background-color: rgba(64, 224, 208, 0.397);
+    }
+</style>

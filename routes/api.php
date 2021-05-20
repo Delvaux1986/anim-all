@@ -1,6 +1,8 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
+
+use App\Models\Animal;
+use App\Models\Family;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -26,4 +28,12 @@ Route::get('/getAllTasks' , function (){
 Route::get('/getAllUsers', function (){
     return User::with('role')->get();
 
+});
+
+Route::get('/getAllFamily' , function() {
+    return Family::all();
+});
+
+Route::get('/getAllAnimals' , function() {
+    return Animal::with('family')->get();
 });

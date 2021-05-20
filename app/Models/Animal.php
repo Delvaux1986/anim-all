@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Models\Specie;
+use App\Models\Family;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -20,8 +20,8 @@ class Animal extends Model
         'img_url'
     ];
 
-    public function specie(){
-        return $this->belongsTo(Specie::class);
+    public function family(){
+        return $this->belongsTo(Family::class);
     }
 
     public function stories(){

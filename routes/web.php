@@ -23,6 +23,9 @@ Route::get('/', [HomeController::class , 'index'])->name('home');
 
 Route::get('/dashboard', [DashboardController::class , 'index'])->middleware(['auth:sanctum', 'verified'])->name('dashboard');
 Route::get('/animals' , [AnimalController::class , 'index'])->middleware(['auth:sanctum', 'verified'])->name('animals.index');
+Route::get('/animals/create' , [AnimalController::class , 'create'])->middleware(['auth:sanctum', 'verified'])->name('animals.create');
+Route::post('/animals/store' , [AnimalController::class , 'store'])->middleware(['auth:sanctum', 'verified'])->name('animals.store');
+
 Route::get('/users' , [UserController::class , 'index'])->middleware(['auth:sanctum', 'verified'])->name('employes.index');
 
 

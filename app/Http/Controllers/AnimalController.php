@@ -6,6 +6,7 @@ use Inertia\Inertia;
 use App\Models\Animal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class AnimalController extends Controller
 {
@@ -32,7 +33,7 @@ class AnimalController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Animals/Create');
     }
 
     /**
@@ -43,7 +44,9 @@ class AnimalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
+        Animal::create($request->all());
+        return Redirect::route('animals.index')->with('success' , 'Animal bien ajouter');
     }
 
     /**
