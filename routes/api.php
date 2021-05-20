@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\AnimalController;
 use App\Models\Animal;
 use App\Models\Family;
 use App\Models\Task;
@@ -37,3 +37,4 @@ Route::get('/getAllFamily' , function() {
 Route::get('/getAllAnimals' , function() {
     return Animal::with('family')->get();
 });
+

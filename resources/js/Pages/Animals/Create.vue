@@ -38,7 +38,7 @@
             <div class="mb-4 w-2/4">
                 <label for="img_url" class="block text-gray-700 text-sm font-bold mb-2">Photo :</label>
                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-                id="img_url" name="img_url" type="file" accept=".png, .jpg, .jpeg" @change="uploadImg()" >
+                id="img_url" name="img_url" type="file" accept=".png, .jpg, .jpeg , .png" @change="selectPhoto" >
             </div>
             <input type="submit" value="créer" class="focus:outline-none">
         </form>
@@ -58,7 +58,6 @@ export default {
         return {
             familyList : [],
             file : null,
-            image : null,
             form : {
                 name : '',
                 specie_id : '',
@@ -66,6 +65,8 @@ export default {
                 gender : '',
                 age : '',
                 status : '',
+                img_url : ''
+                
             }
         }
     },
@@ -77,14 +78,25 @@ export default {
                 });
             })
         },
-        uploadImg(){
-            console.log('uploadOmG')
-            
-            let img = e.target.files
-            let formData = new FormData();
+        selectPhoto(e){
+            this.file = e.target.files[0] 
         },
         submit() {
-            this.$inertia.post('/animals/store', this.form)
+            let data = new FormData();
+            data.append("file", this.file);
+            const config = {
+                headers: {
+                    'content-type': 'multipart/form-data'
+                    }
+                }
+            axios.post('/uploadPhoto' , data , config).then((response) => {
+                        this.form.img_url = response.data;
+                        this.$inertia.post('/animals/store', this.form)
+                    })
+                    .catch((error) => {
+                        console.log(error.response.data.errors);
+                    });
+                    console.log(this.form);
         }
     },
     mounted(){

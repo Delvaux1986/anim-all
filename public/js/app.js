@@ -17508,14 +17508,14 @@ __webpack_require__.r(__webpack_exports__);
     return {
       familyList: [],
       file: null,
-      image: null,
       form: {
         name: '',
         specie_id: '',
         race: '',
         gender: '',
         age: '',
-        status: ''
+        status: '',
+        img_url: ''
       }
     };
   },
@@ -17529,13 +17529,27 @@ __webpack_require__.r(__webpack_exports__);
         });
       });
     },
-    uploadImg: function uploadImg() {
-      console.log('uploadOmG');
-      var img = e.target.files;
-      var formData = new FormData();
+    selectPhoto: function selectPhoto(e) {
+      this.file = e.target.files[0];
     },
     submit: function submit() {
-      this.$inertia.post('/animals/store', this.form);
+      var _this2 = this;
+
+      var data = new FormData();
+      data.append("file", this.file);
+      var config = {
+        headers: {
+          'content-type': 'multipart/form-data'
+        }
+      };
+      axios.post('/uploadPhoto', data, config).then(function (response) {
+        _this2.form.img_url = response.data;
+
+        _this2.$inertia.post('/animals/store', _this2.form);
+      })["catch"](function (error) {
+        console.log(error.response.data.errors);
+      });
+      console.log(this.form);
     }
   },
   mounted: function mounted() {
@@ -20390,9 +20404,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     id: "img_url",
     name: "img_url",
     type: "file",
-    accept: ".png, .jpg, .jpeg",
-    onChange: _cache[7] || (_cache[7] = function ($event) {
-      return $options.uploadImg();
+    accept: ".png, .jpg, .jpeg , .png",
+    onChange: _cache[7] || (_cache[7] = function () {
+      return $options.selectPhoto && $options.selectPhoto.apply($options, arguments);
     })
   }, null, 32
   /* HYDRATE_EVENTS */
