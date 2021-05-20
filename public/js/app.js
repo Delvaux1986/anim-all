@@ -17962,7 +17962,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {},
   mounted: function mounted() {
-    console.log(this.$props.url);
+    console.log();
   }
 });
 
