@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -15,7 +16,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Users/Index');
+        $roleUser = Auth::user()->role_id;
+        return Inertia::render('Users/Index',[
+            'role' => $roleUser
+        ]);
     }
 
     /**

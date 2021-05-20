@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Inertia\Inertia;
 use App\Models\Animal;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
+use Illuminate\Support\Facades\Auth;
 
 class AnimalController extends Controller
 {
+
+    
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +18,11 @@ class AnimalController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Animals/Index');
+        
+        $roleUser = Auth::user()->role_id;
+        return Inertia::render('Animals/Index', [
+            'role' => $roleUser
+        ]);
     }
 
     /**

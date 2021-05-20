@@ -1,7 +1,8 @@
 <template>
-    <div class="text-center bg-light text-pink my-4">
+    <div class="w-screen  h-screen bg-white">
         <Menu></Menu>
-        <Table-users></Table-users>
+        <h2 class="text-pink text-3xl py-12 uppercase font-extrabold text-center">Personnel</h2>
+        <Table-users :role="role"></Table-users>
     </div>
 </template>
 
@@ -17,5 +18,8 @@ export default {
     setup() {
         
     },
+    props:{
+        role : Number,
+    }
 }
 </script>
