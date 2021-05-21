@@ -1,6 +1,7 @@
 :root 
 {
-    --color-pink : #BA455A;
+    --color-primary : #BA455A;
+    --color-secondary : #5DB0A1;
     --color-white: #F1F8F7;
     --text-size: 16px;
 }

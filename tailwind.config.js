@@ -10,6 +10,7 @@ module.exports = {
     ],
 
     theme: {
+        ringColor: false,
         textColor: theme => theme('colors'),
             textColor: {
             'white': '#F1F8F7',
@@ -36,6 +37,9 @@ module.exports = {
             opacity: ['disabled'],
         },
     },
-
+    corePlugins: {
+        // ...
+       backgroundImage: false,
+      },
     plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
 };

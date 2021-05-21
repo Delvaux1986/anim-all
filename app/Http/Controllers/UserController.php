@@ -16,10 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $roleUser = Auth::user()->role_id;
-        return Inertia::render('Users/Index',[
-            'role' => $roleUser
-        ]);
+        $data = User::with('role')->paginate(5);
+        return response()->json($data);
     }
 
     /**

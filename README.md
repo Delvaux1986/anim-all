@@ -20,7 +20,7 @@
     * font-awasome
     * vue-cal
     * vue-axios
-    * v-pagination 3
+    * VueTailwindPagination
 
 ## When i started : 
 

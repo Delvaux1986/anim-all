@@ -25,10 +25,10 @@
             </tr>
         </tbody>
     </table>
-    <div class="flex flex-row justify-center ">
+    <div class="flex flex-row justify-center" >
         <VueTailwindPagination  id="pagination" :current="laravelData.current_page" :total="laravelData.total" :per-page="laravelData.per_page" @page-changed="getResults"/>
     </div>
-    <div class="flex justify-center text-4xl my-5 text-green" @click="createAnimal()"> 
+    <div class="flex justify-center text-4xl my-5 text-green" @click="createAnimal()" :v-if="role === 1 || role ===2"> 
         <i class="fas fa-plus  p-3"></i>
 </div>
 </template>
@@ -83,14 +83,21 @@ import VueTailwindPagination from '@ocrv/vue-tailwind-pagination'
         margin:auto auto;
     }
     thead{
-        border-bottom: var(--color-pink) 1px solid;
+        border-bottom: var(--color-primary) 1px solid;
     }
     #pagination section {
         border:none;
         
     }
-    
-    #pagination section ul li a div::after{
-        background-color : var(--color-pink);
+     #pagination section div div{
+        /* display:none; */
+        
+        margin:auto auto;
+        border:none;
+        outline: none;
+        
+    }
+    #pagination section ul li a div:hover{
+        background-color : var(--color-primary) !important;
     }
 </style>

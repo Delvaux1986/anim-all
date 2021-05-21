@@ -25,10 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/getAllTasks' , function (){
     return Task::all();
 });
-Route::get('/getAllUsers', function (){
-    return User::with('role')->get();
 
-});
 
 Route::get('/getAllFamily' , function() {
     return Family::all();

@@ -41,50 +41,13 @@
 import axios from 'axios'
 import VueTailwindPagination from '@ocrv/vue-tailwind-pagination'
 
-export default {
-    components:{
-        VueTailwindPagination
-    },
-    data(){
-        return {
-            laravelData: {},    
-        }
-    },
-    setup() {
-        
+    export default {
+        name :'tableTasks',
+        components : {
+            VueTailwindPagination
         },
-    mounted() {
-        this.getResults();
-    },
-    methods: {
-        
-        getResults(page = 1) { // PAGINATION
-                if (typeof page === 'undefined') {
-                    page = 1;
-                }
-                axios.get('/getAllUsers?page='+page).then(response => {
-                    this.laravelData = response.data;
-                });
-                
-                
-            }
-    },
-    props : {
-        role : Number,
+        setup() {
+            
+        },
     }
-}
 </script>
-
-<style>
-    table{
-        font-family: 'Roboto Mono', monospace;
-        width:80%;
-        margin:auto auto;
-        
-    }
-    thead{
-        border-bottom: var(--color-primary) 1px solid;
-        padding-bottom:10px;
-        
-    }
-</style>

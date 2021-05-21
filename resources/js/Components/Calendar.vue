@@ -1,6 +1,20 @@
 <template>
+<div class="flex flex-row justify-center items-center">
+    <button @click="activeView = 'day'">Jour</button>
+    <button @click="activeView = 'week'">Semaine</button>
+    <button @click="activeView = 'month'">Mois</button>
+</div>
+    <vue-cal style="height: 70vh; width:80%;" 
+    class="bg-white text-black flex shadow-2xl" 
+    today-button :time-from="8 * 60" :time-to="19 * 60" 
+    :events="data" 
+    :disable-views="['years','year']" 
+    locale="fr"
+    hide-view-selector
+    :active-view="activeView"
+    >
+    
 
-    <vue-cal style="height: 70vh; width:80%;" class="bg-white text-black flex shadow-2xl" today-button :time-from="8 * 60" :time-to="19 * 60" :events="this.events">
         <template v-slot:today-button></template>
     </vue-cal>
 
@@ -11,8 +25,10 @@
 import 'vue-cal/dist/vuecal.css'
 import axios from 'axios'
 import VueCal from 'vue-cal'
+import 'vue-cal/dist/i18n/fr.js'
 
 export default {
+    name : "calendar",
     components:{
         VueCal
     },
@@ -21,21 +37,23 @@ export default {
     },
     mounted() {
         this.getTasks();
+        console.log(this.activeView)
     },
     props: {
-        events: Array,
+        data: Array,
     },
     data() {
         return {
-            events: [], 
+            data: [],
+            activeView : 'day', 
              
         }
     },
     methods: {
-        getTasks() {
+         getTasks() {
             axios.get('/api/getAllTasks').then((response) => {
                 response.data.forEach(event => {
-                    this.events.push(event);
+                    this.data.push(event);
                 });
             })
         },

@@ -1,6 +1,6 @@
 <template>
     <sidebar-menu @toggle-collapse="onToggleCollapse" @item-click="onItemClick" />
-    <sidebar-menu :menu="menu" collapsed='true' />
+    <sidebar-menu :menu="menu" collapsed='true' disableHover="true"/>
 </template>
 
 <script>
@@ -16,7 +16,7 @@ export default {
         return {
             // SET DATA
             usersList: [],
-            events: [],
+            
             // SET MENU
             menu: [{
                     header: 'Anim-All',
@@ -54,7 +54,7 @@ export default {
                 //     ]
                 // }
             ],
-            isCollapsed: true,
+            
             // DATA OF TABLE USERS
             
             
@@ -63,13 +63,7 @@ export default {
     methods: {
         onToggleCollapse(collapsed) {},
         onItemClick(event, item, node) {},
-        getTasks() {
-            axios.get('/api/getAllTasks').then((response) => {
-                response.data.forEach(event => {
-                    this.events.push(event);
-                });
-            })
-        },
+        
         getUsers() {
             axios.get('/api/getAllUsers').then((response) => {
                 response.data.forEach(user => {
@@ -82,3 +76,13 @@ export default {
 }
 
 </script>
+
+<style>
+    .v-sidebar-menu , .v-sidebar-menu .vsm--toggle-btn {
+        background-color: var(--color-primary);
+    }
+    .v-sidebar-menu .vsm--arrow {
+        background-color: var(--color-primary);
+    }
+    
+</style>

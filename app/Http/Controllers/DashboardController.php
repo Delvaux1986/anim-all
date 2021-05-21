@@ -21,4 +21,16 @@ class DashboardController extends Controller
             'role' => $roleUser
         ]);
     }
+    public function users(){
+        $roleUser = Auth::user()->role_id;
+        return Inertia::render('Users/Index',[
+            'role' => $roleUser
+        ]);
+    }
+    public function tasks(){
+        $roleUser = Auth::user()->role_id;
+        return Inertia::render('Tasks/Index',[
+            'role' => $roleUser
+        ]);
+    }
 }
