@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Inertia\Inertia;
 use App\Models\Animal;
+use App\Models\Storie;
 use App\Models\FileUpload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,11 +21,8 @@ class AnimalController extends Controller
      */
     public function index()
     {
-        
-        $roleUser = Auth::user()->role_id;
-        return Inertia::render('Animals/Index', [
-            'role' => $roleUser
-        ]);
+        $data = Animal::with('family')->paginate(5);
+        return response()->json($data);
     }
 
     /**
@@ -45,8 +43,13 @@ class AnimalController extends Controller
      */
     public function store(Request $request)
     {
+        $newRecord = Animal::create($request->all());
+        // CREATE A STORY LIKE an animal has been registered
+        Storie::create([
+            'animal_id' => $newRecord->id,
+            'description' => $newRecord->name .' a été enregistré dans la base de données'
+        ]);
         
-        Animal::create($request->all());
         return Redirect::route('animals.index')->with('success' , 'Animal bien ajouter');
     }
 

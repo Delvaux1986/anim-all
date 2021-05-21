@@ -13,7 +13,7 @@
             </tr>
         </thead>
         <tbody class="table-row-group">
-            <tr v-for="(animal,id) in this.animalList" :key="id">
+            <tr v-for="(animal,id) in laravelData.data" :key="id">
                 <th class="table-cell  text-left" :v-if="animal.img_url"><img :src="animal.img_url" style="width:70px;height:75px;"></th>
                 <th class="table-cell text-left">{{animal.name ? animal.name : 'N/A'}}</th>
                 <th class="table-cell text-left">{{animal.race ? animal.race : 'N/A'}}</th>
@@ -25,6 +25,9 @@
             </tr>
         </tbody>
     </table>
+    <div class="flex flex-row justify-center ">
+        <VueTailwindPagination  id="pagination" :current="laravelData.current_page" :total="laravelData.total" :per-page="laravelData.per_page" @page-changed="getResults"/>
+    </div>
     <div class="flex justify-center text-4xl my-5 text-green" @click="createAnimal()"> 
         <i class="fas fa-plus  p-3"></i>
 </div>
@@ -32,44 +35,62 @@
 
 <script>
 import axios from 'axios'
+import VueTailwindPagination from '@ocrv/vue-tailwind-pagination'
+
+
     export default {
+        components:{
+            VueTailwindPagination
+        },
         setup() {
             
         },
         data(){
             return {
-                animalList : []
+                animalList : [],
+                laravelData: {},
             }
         },
         props : {
             role : Number
         },
         methods :{
-            getAllAnimals(){
-                axios.get('/api/getAllAnimals').then((response) => {
-                    response.data.forEach(animal => {
-                        this.animalList.push(animal)
-                    });
-                })
-            },
             createAnimal(){
                 this.$inertia.get('/animals/create');
+            },
+            getResults(page = 1) { // PAGINATION
+                if (typeof page === 'undefined') {
+                    page = 1;
+                }
+                axios.get('/getAllAnimals?page='+page).then(response => {
+                    this.laravelData = response.data;
+                });
+                
+                
             }
         },
         mounted(){
-            console.log(this.animalList)
-            this.getAllAnimals();
+            this.getResults();
         }
     }
 </script>
 
-<style>
+<style lang="css">
+
     table{
         font-family: 'Roboto Mono', monospace;
         width:80%;
         margin:auto auto;
     }
     thead{
-        border-bottom: tomato 1px solid;
+        border-bottom: var(--color-pink) 1px solid;
+    }
+    #pagination section {
+        border:none;
+        
+    }
+    
+    #pagination section ul li a div::after{
+        background-color : var(--color-pink);
     }
 </style>

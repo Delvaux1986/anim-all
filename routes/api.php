@@ -34,7 +34,5 @@ Route::get('/getAllFamily' , function() {
     return Family::all();
 });
 
-Route::get('/getAllAnimals' , function() {
-    return Animal::with('family')->get();
-});
+
 
