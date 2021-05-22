@@ -1,5 +1,5 @@
 <template>
-    <div class="w-screen  h-screen bg-white">
+    <div class="w-screen min-h-screen bg-white">
         <Menu></Menu>
         <div v-if="$page.props.flash.success" class="flashSucces">
             {{ $page.props.flash.success }}
@@ -30,15 +30,5 @@ export default {
 </script>
 
 <style>
-    .flashSucces{
-        display:flex;
-        width:100%;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 5px 15px;
-        font-size: 28px;
-        color:#BA455A;
-        background-color: rgba(64, 224, 208, 0.397);
-    }
+    
 </style>

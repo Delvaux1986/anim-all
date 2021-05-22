@@ -1,5 +1,5 @@
 <template>
-    <div class="w-screen  h-screen bg-white">
+    <div class="w-screen min-h-screen bg-white">
         <Menu></Menu>
         <div v-if="$page.props.flash.success" class="flashSucces">
             {{ $page.props.flash.success }}

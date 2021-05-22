@@ -1,7 +1,9 @@
 <template>
     <app-layout>
-    <div>
-        <h1>Coter CLIENT</h1>
+    <div >
+        <a href="/login">Connecter</a>
+        <a href="/register">S'enregister</a>
+        <a href="/logout">DECO</a>
     </div>
 
     </app-layout>

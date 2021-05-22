@@ -4,4 +4,37 @@
     --color-secondary : #5DB0A1;
     --color-white: #F1F8F7;
     --text-size: 16px;
+    --reunion: #ADF7B6;
+    --walking: #FFC09F;
+    --cleaning: #FCF5C7;
+}
+
+.btn-send 
+{
+    background-color: var(--color-primary);
+    width:60px;
+    height:40px;
+    display:flex;
+    color:var(--color-secondary);
+    justify-content:center;
+    align-items:center;
+}
+.btn-send:hover
+{
+    background-color: var(--color-secondary);
+    color:var(--color-primary);
+    cursor:pointer;
+}
+
+.flashSucces
+{
+    display:flex;
+    width:100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 5px 15px;
+    font-size: 28px;
+    color:#BA455A;
+    background-color: rgba(64, 224, 208, 0.397);
 }

@@ -74,18 +74,18 @@ export default {
 
 
 .reunion {
-    background-color: yellow;
+    background-color: var(--reunion);
     color: black;
     
 }
 
 .cleaning {
-    background-color: rgb(57, 145, 228);
+    background-color: var(--cleaning);
     color: black;
 }
 
 .walking {
-    background-color: rgb(235, 90, 240);
+    background-color: var(--walking);
     color: black;
 }
 </style>

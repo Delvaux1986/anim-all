@@ -1,6 +1,6 @@
 <template>
     <table class="table bg-white p-1">
-        <thead class="table-row-group                                                                  ">
+        <thead class="table-row-group">
             <tr class="table-row">
                 <th class="table-cell text-left">Photo</th>
                 <th class="table-cell text-left">Nom</th>
@@ -8,8 +8,7 @@
                 <th class="table-cell text-left">Genre</th>
                 <th class="table-cell text-center">Age</th>
                 <th class="table-cell text-left">Status</th>
-                <th :v-if="role === 1 || role ===2" class="table-cell ">Editer</th>
-                <th :v-if="role === 1 || role ===2" class="table-cell ">Supprimer</th>
+                <th v-if="this.$inertia.page.url == this.editable && role=== 2 || this.$inertia.page.url == this.editable && role === 1 " class="table-cell "></th>
             </tr>
         </thead>
         <tbody class="table-row-group">
@@ -20,27 +19,30 @@
                 <th class="table-cell text-left">{{animal.gender ? animal.gender : 'N/A'}}</th>
                 <th class="table-cell text-center">{{animal.age ? animal.age : 'N/A'}}</th>
                 <th class="table-cell text-left">{{animal.status ? animal.status : 'N/A'}}</th>
-                <th :v-if="role === 1 || role ===2" class="table-cell "><i class="fas fa-pen-square"></i></th>
-                <th :v-if="role === 1 || role ===2" class="table-cell " ><i class="fas fa-minus-square"></i></th>
+                <th v-if="this.$inertia.page.url == this.editable && role=== 2 || this.$inertia.page.url == this.editable && role === 1 " class="table-cell ">
+                    <Menu-edit></Menu-edit>
+                </th>
             </tr>
         </tbody>
     </table>
     <div class="flex flex-row justify-center" >
         <VueTailwindPagination  id="pagination" :current="laravelData.current_page" :total="laravelData.total" :per-page="laravelData.per_page" @page-changed="getResults"/>
     </div>
-    <div class="flex justify-center text-4xl my-5 text-green" @click="createAnimal()" :v-if="role === 1 || role ===2"> 
-        <i class="fas fa-plus  p-3"></i>
+    <div class="flex justify-center  my-5 " @click="createAnimal()" v-if="this.$inertia.page.url == this.editable && role=== 2 || this.$inertia.page.url == this.editable && role === 1 "> 
+        <div class="btn-send "><i class="fas fa-plus  p-3"></i></div>
 </div>
 </template>
 
 <script>
 import axios from 'axios'
 import VueTailwindPagination from '@ocrv/vue-tailwind-pagination'
+import MenuEdit from './MenuEdit'
 
 
     export default {
         components:{
-            VueTailwindPagination
+            VueTailwindPagination,
+            MenuEdit
         },
         setup() {
             
@@ -49,6 +51,7 @@ import VueTailwindPagination from '@ocrv/vue-tailwind-pagination'
             return {
                 animalList : [],
                 laravelData: {},
+                editable : '/animals'
             }
         },
         props : {

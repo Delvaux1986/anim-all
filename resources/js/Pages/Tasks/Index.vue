@@ -1,10 +1,12 @@
 <template>
-    <div class="w-screen  h-screen bg-white">
+    <div class="w-screen min-h-screen bg-white">
         <Menu></Menu>
-            <h2 class="text-pink text-3xl py-12 uppercase font-extrabold text-center">Tâches</h2>
-            
-                <Table-tasks :role="role"></Table-tasks>
-                <Calendar class="self-center"></Calendar>
+        <div v-if="$page.props.flash.success" class="flashSucces">
+            {{ $page.props.flash.success }}
+        </div>
+        <h2 class="text-pink text-3xl py-12 uppercase font-extrabold text-center">Tâches</h2>
+            <Calendar class="self-center"></Calendar>
+            <Table-tasks :role="role" class="mt-5"></Table-tasks>
         </div>
     
 </template>
@@ -24,5 +26,12 @@ import Calendar from './../../Components/Calendar'
         setup() {
             
         },
+        props: {
+            role : Number
+        },
     }
 </script>
+
+<style>
+   
+</style>

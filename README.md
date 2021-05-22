@@ -21,6 +21,7 @@
     * vue-cal
     * vue-axios
     * VueTailwindPagination
+    * momentjs ( for formating date in vue )
 
 ## When i started : 
 

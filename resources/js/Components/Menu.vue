@@ -42,6 +42,12 @@ export default {
                     title: 'Employés',
                     icon: 'fas fa-user-cog'
                 },
+                {
+                    href: '/logout',
+                    title: 'Déconnecter',
+                    icon: 'fas fa-sign-out-alt',
+                    method : 'post'
+                },
                 // {
                 //     href: '/charts',
                 //     title: 'Charts',

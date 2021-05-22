@@ -52,4 +52,5 @@ Route::get('/getAllAnimals' , [AnimalController::class , 'index'])->middleware([
 Route::get('/getAllUsers', [UserController::class, 'index'])->middleware(['auth:sanctum', 'verified']);
 Route::get('/getAllTasksforTable', [TaskController::class, 'index'])->middleware(['auth:sanctum', 'verified']);
 
-
+// LOGOUT 
+Route::get('/logout' , 'Laravel\Fortify\Http\Controllers\AuthenticatedSessionController@destroy');

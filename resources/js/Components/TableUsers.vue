@@ -9,8 +9,8 @@
                 <th class="table-cell text-left">Présent</th>
                 <th class="table-cell text-right">Début</th>
                 <th class="table-cell text-right">Fin</th>
-                <th :v-if="role === 1 || role ===2" class="table-cell ">Editer</th>
-                <th :v-if="role === 1 || role ===2" class="table-cell ">Supprimer</th>
+                <th class="table-cell"
+                    v-if="this.$inertia.page.url == this.editable && role=== 2 || this.$inertia.page.url == this.editable && role === 1 "></th>
             </tr>
         </thead>
         <tbody class="table-row-group">
@@ -21,18 +21,17 @@
                 <th class="table-cell text-left">{{user.workToday ? 'Oui' : 'Non'}}</th>
                 <th class="table-cell text-right">{{user.startWork ? user.startWork.substr(0, 5) : 'N/A'}}</th>
                 <th class="table-cell text-right">{{user.endWork ? user.endWork.substr(0, 5) : 'N/A'}}</th>
-                <th :v-if="role === 1 || role ===2" class="table-cell "><i class="fas fa-pen-square"></i></th>
-                <th :v-if="role === 1 || role ===2" class="table-cell " ><i class="fas fa-minus-square"></i></th>
-
-
+                <th class="table-cell" v-if="this.$inertia.page.url == this.editable && role=== 2 || this.$inertia.page.url == this.editable && role === 1 ">
+                    <Menu-edit></Menu-edit>
+                </th>
             </tr>
         </tbody>
     </table>
     <div class="flex flex-row justify-center">
             <VueTailwindPagination  id="pagination" :current="laravelData.current_page" :total="laravelData.total" :per-page="laravelData.per_page" @page-changed="getResults"/>
         </div>
-    <div class="flex justify-center text-4xl my-5 text-green" :v-if="role === 1 || role ===2"> 
-        <i class="fas fa-plus  p-3"></i>
+    <div class="flex justify-center my-5 " v-if="this.$inertia.page.url == this.editable && role=== 2 || this.$inertia.page.url == this.editable && role === 1 "> 
+        <div class="btn-send"><i class="fas fa-plus  p-3"></i></div>
     </div>
 </div>
 </template>
@@ -40,14 +39,17 @@
 <script>
 import axios from 'axios'
 import VueTailwindPagination from '@ocrv/vue-tailwind-pagination'
+import MenuEdit from './MenuEdit.vue'
 
 export default {
     components:{
-        VueTailwindPagination
+        VueTailwindPagination,
+        MenuEdit
     },
     data(){
         return {
-            laravelData: {},    
+            laravelData: {},
+            editable : '/users', 
         }
     },
     setup() {
@@ -55,6 +57,8 @@ export default {
         },
     mounted() {
         this.getResults();
+        console.log(this.$inertia.page.url === this.editable )
+        // console.log(this.editable)
     },
     methods: {
         

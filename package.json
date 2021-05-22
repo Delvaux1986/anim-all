@@ -27,6 +27,7 @@
     },
     "dependencies": {
         "@ocrv/vue-tailwind-pagination": "^0.0.4",
+        "moment": "^2.29.1",
         "vue-axios": "^3.2.4",
         "vue-cal": "^4.2.0",
         "vue-sidebar-menu": "^5.0.0-alpha.9"
