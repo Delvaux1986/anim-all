@@ -1,6 +1,6 @@
 <template>
 <div>
-    <table class="table  bg-white p-1">
+    <table class="table  bg-white p-1 w-4/5">
         <thead class="table-row-group  text-green text-2xl ">
             <tr class="table-row py-2">
                 <th class="table-cell text-left">Nom</th>
@@ -86,5 +86,20 @@ export default {
         border-bottom: var(--color-primary) 1px solid;
         padding-bottom:10px;
         
+    }
+    #pagination section {
+        border:none;
+        
+    }
+     #pagination section div div{
+        /* display:none; */
+        
+        margin:auto auto;
+        border:none;
+        outline: none;
+        
+    }
+    #pagination section ul li a div:hover{
+        background-color : var(--color-primary) !important;
     }
 </style>

@@ -1,22 +1,29 @@
 <template>
-<div class="flex flex-row justify-center items-center">
-    <button @click="activeView = 'day'">Jour</button>
-    <button @click="activeView = 'week'">Semaine</button>
-    <button @click="activeView = 'month'">Mois</button>
-</div>
-    <vue-cal style="height: 70vh; width:80%;" 
-    class="bg-white text-black flex shadow-2xl" 
-    today-button :time-from="8 * 60" :time-to="19 * 60" 
-    :events="data" 
-    :disable-views="['years','year']" 
-    locale="fr"
-    hide-view-selector
-    :active-view="activeView"
-    >
+
+    <div class="flex flex-row justify-center items-center">
+        <button @click="activeView = 'day'" class="p-2 focus:underline">Jour</button>
+        <button @click="activeView = 'week'" class="p-2 focus:underline">Semaine</button>
+        <button @click="activeView = 'month'" class="p-2 focus:underline">Mois</button>
+    </div>
+    
+        <vue-cal style="height: 70vh;width:80%; margin:auto auto;" 
+        class="bg-white text-black shadow-2xl" 
+        today-button :time-from="8 * 60" :time-to="19 * 60" 
+        :events="data" 
+        :disable-views="['years','year']" 
+        locale="fr"
+        hide-view-selector
+        :active-view="activeView"
+        :overlapsPerTimeStep ="true"
+        >
+        
+
+            <template v-slot:today-button></template>
+        </vue-cal>
+
     
 
-        <template v-slot:today-button></template>
-    </vue-cal>
+
 
 
 </template>
@@ -45,7 +52,8 @@ export default {
     data() {
         return {
             data: [],
-            activeView : 'day', 
+            activeView : 'day',
+             
              
         }
     },
@@ -63,29 +71,21 @@ export default {
 </script>
 
 <style>
-.calendar {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
+
 
 .reunion {
     background-color: yellow;
     color: black;
-    border-radius: 10%;
+    
 }
 
 .cleaning {
     background-color: rgb(57, 145, 228);
-    border-radius: 10%;
     color: black;
 }
 
 .walking {
     background-color: rgb(235, 90, 240);
-    border-radius: 10%;
     color: black;
 }
 </style>

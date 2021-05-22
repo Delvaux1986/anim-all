@@ -21,17 +21,29 @@ use App\Http\Controllers\DashboardController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// CLIENT SIDE 
 Route::get('/', [HomeController::class , 'index'])->name('home');
 
+
+
+// DASHBOARD SIDE FOR GESTION OF SPA 
 Route::get('/dashboard', [DashboardController::class , 'index'])->middleware(['auth:sanctum', 'verified'])->name('dashboard');
+
+// DASHBOARD ANIMALS 
+
 Route::get('/animals' , [DashboardController::class , 'animals'])->middleware(['auth:sanctum', 'verified'])->name('animals.index');
 Route::get('/animals/create' , [AnimalController::class , 'create'])->middleware(['auth:sanctum', 'verified'])->name('animals.create');
 Route::post('/uploadPhoto' , [FileController::class , 'storePhoto'])->middleware(['auth:sanctum', 'verified']);
 Route::post('/animals/store' , [AnimalController::class , 'store'])->middleware(['auth:sanctum', 'verified'])->name('animals.store');
 
-Route::get('/users' , [DashboardController::class , 'users'])->middleware(['auth:sanctum', 'verified'])->name('employes.index');
+// DAHSBOARD TASK
+
 Route::get('/tasks' , [DashboardController::class , 'tasks'])->middleware(['auth:sanctum', 'verified'])->name('tasks.index');
+Route::get('/tasks/create' , [TaskController::class , 'create'])->middleware(['auth:sanctum', 'verified'])->name('tasks.create');
+Route::post('/tasks/store' , [TaskController::class , 'store'])->middleware(['auth:sanctum', 'verified'])->name('tasks.store');
+
+// DASHBOARD USERS@EMPLOYES
+Route::get('/users' , [DashboardController::class , 'users'])->middleware(['auth:sanctum', 'verified'])->name('employes.index');
 
 
 // ROUTE OF COMPONENTS TABLE

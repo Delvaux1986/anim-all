@@ -50,7 +50,7 @@ class AnimalController extends Controller
             'description' => $newRecord->name .' a été enregistré dans la base de données'
         ]);
         
-        return Redirect::route('animals.index')->with('success' , 'Animal bien ajouter');
+        return Redirect::route('animals.index')->with('success' , 'Animal bien enregistré');
     }
 
     /**

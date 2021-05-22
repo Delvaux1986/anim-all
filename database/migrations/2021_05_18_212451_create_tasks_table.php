@@ -18,7 +18,7 @@ class CreateTasksTable extends Migration
             $table->datetime('start');
             $table->datetime('end');
             $table->string('title');
-            $table->string('icon');
+            $table->string('icon')->nullable();
             $table->string('content');
             $table->longText('contentFull');
             $table->string('class');
