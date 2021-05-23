@@ -1,5 +1,5 @@
 ### Anim-All
-<img src="https://github.com/Delvaux1986/anim-all/blob/main/resources/js/Layouts/logo/logoLogin.png?raw=true" alt="logo" style="width:250px;height:250px; margin:auto auto;"/>
+<img src="https://github.com/Delvaux1986/anim-all/blob/main/public/assets/img/logo/logo.png?raw=true" alt="logo" style="width:250px;height:250px; margin:auto auto;"/>
 ## what is it :
 
 > This is a training project to improve my hardskills.
