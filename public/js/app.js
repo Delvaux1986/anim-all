@@ -16806,7 +16806,7 @@ __webpack_require__.r(__webpack_exports__);
     showLink: String,
     editLink: String,
     deleteLink: String,
-    itemToDelete: String
+    itemToDelete: Object
   },
   data: function data() {
     return {
@@ -16823,7 +16823,8 @@ __webpack_require__.r(__webpack_exports__);
     },
     closeWithAccept: function closeWithAccept() {
       this.isModalVisible = false;
-      this.$inertia["delete"](this.deleteLink);
+      this.$inertia["delete"](this.deleteLink, this.itemToDelete);
+      this.$emit('reloadNeeded');
     }
   },
   mounted: function mounted() {}
@@ -16907,6 +16908,9 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_0___default().get('/getAllAnimals?page=' + page).then(function (response) {
         _this.laravelData = response.data;
       });
+    },
+    reloadComponent: function reloadComponent() {
+      this.getResults();
     }
   },
   mounted: function mounted() {
@@ -17724,7 +17728,7 @@ __webpack_require__.r(__webpack_exports__);
       file: null,
       form: {
         name: '',
-        specie_id: '',
+        family_id: '',
         race: '',
         gender: '',
         age: '',
@@ -17763,7 +17767,6 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log(error.response.data.errors);
       });
-      console.log(this.form);
     }
   },
   mounted: function mounted() {
@@ -18388,8 +18391,7 @@ __webpack_require__.r(__webpack_exports__);
     return {};
   },
   methods: {},
-  mounted: function mounted() {// console.log(this.$inertia);
-  }
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -19121,7 +19123,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onAccept: $options.closeWithAccept
   }, {
     body: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Voulez vous supprimez " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.itemToDelete) + " de la base de donnée ", 1
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Voulez vous supprimez " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_this.itemToDelete.name ? _this.itemToDelete.name : 'WTF ???') + " de la base de donnée ", 1
       /* TEXT */
       )];
     }),
@@ -19335,7 +19337,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       showLink: '/animals/show/' + animal.id,
       editLink: '/animals/edit/' + animal.id,
       deleteLink: '/animals/' + animal.id,
-      itemToDelete: animal.name
+      itemToDelete: animal,
+      onReloadNeeded: _cache[1] || (_cache[1] = function ($event) {
+        return $options.reloadComponent();
+      })
     }, null, 8
     /* PROPS */
     , ["showLink", "editLink", "deleteLink", "itemToDelete"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]);
@@ -19352,7 +19357,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , ["current", "total", "per-page", "onPageChanged"])]), this.$inertia.page.url == this.editable && $props.role === 2 || this.$inertia.page.url == this.editable && $props.role === 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", {
     key: 0,
     "class": "flex justify-center  my-5 ",
-    onClick: _cache[1] || (_cache[1] = function ($event) {
+    onClick: _cache[2] || (_cache[2] = function ($event) {
       return $options.createAnimal();
     })
   }, [_hoisted_19])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 64
@@ -21053,7 +21058,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     id: "",
     "class": "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-      return $data.form.specie_id = $event;
+      return $data.form.family_id = $event;
     })
   }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(this.familyList, function (family) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("option", {
@@ -21066,7 +21071,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* KEYED_FRAGMENT */
   ))], 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form.specie_id]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form.family_id]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
     "class": "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline",
     id: "animalRace",
     name: "animalRace",

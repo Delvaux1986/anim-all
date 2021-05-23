@@ -1,7 +1,7 @@
 <template>
 <Modal v-show="isModalVisible" @Refuse="closeModalWithoutAccept" @Accept="closeWithAccept">
     <template v-slot:body>
-        Voulez vous supprimez {{this.itemToDelete}} de la base de donnée
+        Voulez vous supprimez {{this.itemToDelete.name ? this.itemToDelete.name : 'WTF ???'}} de la base de donnée
     </template>
 </Modal>
 <div class="dropdown">
@@ -26,7 +26,7 @@ export default {
         showLink: String,
         editLink: String,
         deleteLink: String,
-        itemToDelete: String,
+        itemToDelete: Object,
     },
     data() {
         return {
@@ -43,11 +43,13 @@ export default {
         },
         closeWithAccept() {
             this.isModalVisible = false;
-            this.$inertia.delete(this.deleteLink);
+
+            this.$inertia.delete(this.deleteLink , this.itemToDelete);
+            this.$emit('reloadNeeded');
         }
     },
     mounted(){
-
+        
     }
 }
 </script>

@@ -118,7 +118,12 @@ class AnimalController extends Controller
      */
     public function destroy(Animal $animal)
     {
-        dd($animal);
+        Storie::create([
+            'animal_id' => $animal->id,
+            'description' => $animal->name .' a été Supprimer par ' . Auth::user()->name
+        ]);
+        Animal::destroy($animal->id);
+        return Redirect::route('animals.index')->with('success', $animal->name .' a bien été supprimer de la base de donnée');
     }
     
 }

@@ -38,7 +38,7 @@ Route::post('/animals/store' , [AnimalController::class , 'store'])->middleware(
 Route::get('/animals/show/{id}' , [AnimalController::class, 'show'])->middleware(['auth:sanctum', 'verified'])->name('animals.show');
 Route::get('/animals/edit/{id}', [AnimalController::class, 'edit'])->middleware(['auth:sanctum', 'verified'])->name('animals.edit');
 Route::post('/animals/update', [AnimalController::class, 'update'])->middleware(['auth:sanctum', 'verified'])->name('animals.update');
-Route::delete('/animals/{id}', [AnimalController::class, 'destroy'])->middleware(['auth:sanctum', 'verified'])->name('animals.delete');
+Route::delete('/animals/{animal}', [AnimalController::class, 'destroy'])->middleware(['auth:sanctum', 'verified'])->name('animals.delete');
 
 // DAHSBOARD TASK
 

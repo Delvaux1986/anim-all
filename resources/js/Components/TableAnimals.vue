@@ -24,7 +24,8 @@
                     :showLink="'/animals/show/' + animal.id"
                     :editLink="'/animals/edit/' + animal.id"
                     :deleteLink="'/animals/'+ animal.id"
-                    :itemToDelete="animal.name"
+                    :itemToDelete="animal"
+                    @reloadNeeded="reloadComponent()"
                     >
                     </Menu-edit>
                 </th>
@@ -76,6 +77,9 @@ import MenuEdit from './MenuEdit'
                     this.laravelData = response.data;
                 });  
             },
+            reloadComponent(){
+                this.getResults();
+            }
         },
         mounted(){
             this.getResults();

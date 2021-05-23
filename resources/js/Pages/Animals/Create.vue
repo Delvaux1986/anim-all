@@ -11,7 +11,7 @@
             <div class="mb-4 w-2/4">
                 <label for="animalFamily" class="block text-gray-700 text-sm font-bold mb-2">Famille :</label>
                 <select name="animalFamily" id="" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                     v-model="form.specie_id">
+                     v-model="form.family_id">
                      <option v-for="family in this.familyList" :key="family.id" :value="family.id">{{ family.name }}</option>
 
                 </select>
@@ -60,7 +60,7 @@ export default {
             file : null,
             form : {
                 name : '',
-                specie_id : '',
+                family_id : '',
                 race : '',
                 gender : '',
                 age : '',
@@ -96,7 +96,7 @@ export default {
                     .catch((error) => {
                         console.log(error.response.data.errors);
                     });
-                    console.log(this.form);
+                    
         }
     },
     mounted(){
