@@ -1,113 +1,112 @@
 <template>
-    <div id="confirmOverlay">
-    <div id="confirmBox">
+<transition name="modal-fade">
+    <div class="modal-backdrop">
+        <div class="modal">
+            <slot name="header">
+            </slot>
+            <slot name="body">
+            </slot>
 
-        <h1>Title of the confirm dialog</h1>
-        <p>Description of what is about to happen</p>
-
-        <div id="confirmButtons">
-            <a class="button blue" href="#">Yes<span></span></a>
-            <a class="button gray" href="#">No<span></span></a>
+            <div class="footerModal">
+                <button type="button" class="btn-green" @click="Accept">
+                    Oui
+                </button>
+                <button type="button" class="btn-red" @click="Refuse">
+                    Non
+                </button>
+            </div>
         </div>
     </div>
-</div>
+</transition>
 </template>
 
 <script>
 export default {
-    name: 'modal',
-    setup() {
-        
+    name: 'Modal',
+    methods: {
+        Accept() {
+            this.$emit('Accept');
+        },
+        Refuse() {
+            this.$emit('Refuse');
+        }
     },
-}
+};
 </script>
 
 <style>
-    #confirmOverlay{
-    width:100%;
-    height:100%;
-    position:fixed;
-    top:0;
-    left:0;
-    background:url('ie.png');
-    background: -moz-linear-gradient(rgba(11,11,11,0.1), rgba(11,11,11,0.6)) repeat-x rgba(11,11,11,0.2);
-    background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(11,11,11,0.1)), to(rgba(11,11,11,0.6))) repeat-x rgba(11,11,11,0.2);
-    z-index:100000;
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#confirmBox{
-    background:#ebe6e6;
-    width:460px;
-    position:fixed;
-    left:50%;
-    top:50%;
-    margin:-130px 0 0 -230px;
-    border: 1px solid rgba(33, 33, 33, 0.6);
-
-    -moz-box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
-    -webkit-box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
-    box-shadow: 0 0 2px rgba(255, 255, 255, 0.6) inset;
+.modal {
+    background: #FFFFFF;
+    box-shadow: 2px 2px 20px 1px;
+    overflow-x: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height:20vh;
+    width:45%;
+    align-items: stretch;
 }
 
-#confirmBox h1,
-#confirmBox p{
-    font:26px/1 'Cuprum','Lucida Sans Unicode', 'Lucida Grande', sans-serif;
-    background: #f5f5f5;
-    padding: 18px 25px;
-    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
-    color:#666;
+.modal-header
+{
+    padding: 15px;
 }
 
-#confirmBox h1{
-    letter-spacing:0.3px;
-    color:#888;
+.modal-header {
+    position: relative;
+    border-bottom: 1px solid #eeeeee;
+    color: #4AAE9B;
+    justify-content: space-between;
 }
 
-#confirmBox p{
-    background:none;
-    font-size:16px;
-    line-height:1.4;
-    padding-top: 35px;
+.footerModal {
+    border-top: 1px solid #eeeeee;
+    padding: 15px;
+    display:flex;
+    flex-direction: row;    
+}
+button{
+    width:50%;
 }
 
-#confirmButtons{
-    padding:15px 0 25px;
-    text-align:center;
+.modal-body {
+    position: relative;
+    padding: 20px 10px;
 }
 
-#confirmBox .button{
-    display:inline-block;
-    background:#166d99;
-    color:rgb(25, 172, 49);
-    position:relative;
-    height: 33px;
-
-    font:17px/33px 'Cuprum','Lucida Sans Unicode', 'Lucida Grande', sans-serif;
-
-    margin-right: 15px;
-    padding: 0 35px 0 40px;
-    text-decoration:none;
-    border:none;
+.btn-green {
+    color: white;
+    background: #4AAE9B;
+    border: 1px solid #4AAE9B;
+    border-radius: 2px;
+}
+.btn-red {
+    color: white;
+    background: #d13267;
+    border: 1px solid #4AAE9B;
+    border-radius: 2px;
 }
 
-#confirmBox .button:last-child{ margin-right:0;}
-
-#confirmBox .button span{
-    position:absolute;
-    top:0;
-    right:-5px;
-    background:url('buttons.png') no-repeat;
-    width:5px;
-    height:33px
+.modal-fade-enter,
+.modal-fade-leave-to {
+    opacity: 0;
 }
 
-#confirmBox .blue{              background-position:left top;text-shadow:1px 1px 0 #5889a2;}
-#confirmBox .blue span{         background-position:-195px 0;}
-#confirmBox .blue:hover{        background-position:left bottom;}
-#confirmBox .blue:hover span{   background-position:-195px bottom;}
-
-#confirmBox .gray{              background-position:-200px top;text-shadow:1px 1px 0 #707070;}
-#confirmBox .gray span{         background-position:-395px 0;}
-#confirmBox .gray:hover{        background-position:-200px bottom;}
-#confirmBox .gray:hover span{   background-position:-395px bottom;}
+.modal-fade-enter-active,
+.modal-fade-leave-active {
+    transition: opacity .5s ease;
+}
 </style>

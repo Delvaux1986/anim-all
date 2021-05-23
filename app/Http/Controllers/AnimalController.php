@@ -97,7 +97,6 @@ class AnimalController extends Controller
         // UNLINK OLD PHOTO
         $urlSplit = explode('/', $animal->img_url);
         $filename = $urlSplit[3];
-        // dd(storage_path('app/public/uploads/'.$filename));
         unlink(storage_path('app/public/uploads/'.$filename));
         // NOW WE CAN UPDATE
         $animal->update($request->all());

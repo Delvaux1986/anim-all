@@ -22,7 +22,10 @@
                 <th v-if="this.$inertia.page.url == this.editable && role=== 2 || this.$inertia.page.url == this.editable && role === 1 " class="table-cell ">
                     <Menu-edit 
                     :showLink="'/animals/show/' + animal.id"
-                    :editLink="'/animals/edit/' + animal.id">
+                    :editLink="'/animals/edit/' + animal.id"
+                    :deleteLink="'/animals/'+ animal.id"
+                    :itemToDelete="animal.name"
+                    >
                     </Menu-edit>
                 </th>
             </tr>
@@ -42,10 +45,11 @@ import VueTailwindPagination from '@ocrv/vue-tailwind-pagination'
 import MenuEdit from './MenuEdit'
 
 
+
     export default {
         components:{
             VueTailwindPagination,
-            MenuEdit
+            MenuEdit,
         },
         setup() {
             
@@ -70,10 +74,8 @@ import MenuEdit from './MenuEdit'
                 }
                 axios.get('/getAllAnimals?page='+page).then(response => {
                     this.laravelData = response.data;
-                });
-                
-                
-            }
+                });  
+            },
         },
         mounted(){
             this.getResults();
