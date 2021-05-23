@@ -7,7 +7,9 @@ use App\Models\Animal;
 use App\Models\Storie;
 use App\Models\FileUpload;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
 
 class AnimalController extends Controller
@@ -88,9 +90,25 @@ class AnimalController extends Controller
      * @param  \App\Models\Animal  $animal
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Animal $animal)
+    public function update(Request $request)
     {
-        //
+        
+        $animal =  Animal::where('id' , $request->id)->first();
+        // UNLINK OLD PHOTO
+        $urlSplit = explode('/', $animal->img_url);
+        $filename = $urlSplit[3];
+        // dd(storage_path('app/public/uploads/'.$filename));
+        unlink(storage_path('app/public/uploads/'.$filename));
+        // NOW WE CAN UPDATE
+        $animal->update($request->all());
+        
+        // Make the storie for this Animal
+        Storie::create([
+            'animal_id' => $request->id,
+            'description' => $request->name .' a été modifier par ' . Auth::user()->name
+        ]);
+
+        return Redirect::route('animals.show', $animal->id)->with('success' , $animal->name .' a bien été Modifié');
     }
 
     /**
@@ -101,7 +119,7 @@ class AnimalController extends Controller
      */
     public function destroy(Animal $animal)
     {
-        //
+        dd($animal);
     }
     
 }
