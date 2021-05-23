@@ -73,9 +73,12 @@ class AnimalController extends Controller
      * @param  \App\Models\Animal  $animal
      * @return \Illuminate\Http\Response
      */
-    public function edit(Animal $animal)
+    public function edit($id)
     {
-        //
+        $animal = Animal::with('stories','family')->find($id);
+        return Inertia::render('Animals/Edit', [
+            'animal' => $animal
+        ]);
     }
 
     /**

@@ -22,7 +22,7 @@
                 <th v-if="this.$inertia.page.url == this.editable && role=== 2 || this.$inertia.page.url == this.editable && role === 1 " class="table-cell ">
                     <Menu-edit 
                     :showLink="'/animals/show/' + animal.id"
-                    >
+                    :editLink="'/animals/edit/' + animal.id">
                     </Menu-edit>
                 </th>
             </tr>

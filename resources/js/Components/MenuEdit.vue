@@ -2,8 +2,8 @@
     <div class="dropdown">
       <button class="dropbtn"><i class="fas fa-ellipsis-v"></i></button>
       <div class="dropdown-content">
-        <a :href="showLink">Voir</a>
-        <a href="#">Editer</a>
+        <a  v-if="showLink" :href="showLink">Voir</a>
+        <a v-if="editLink" :href="editLink">Editer</a>
         <a href="#">Supprimer</a>
       </div>
     </div>
@@ -14,6 +14,7 @@ export default {
   name : 'MenuEdit',
   props : {
     showLink : String,
+    editLink : String,
   },
   setup() {
     
@@ -25,6 +26,8 @@ export default {
   color: black;
   padding: 16px;
   font-size: 16px;
+  width: 30px;
+  height:20px;
   border: none;
 }
 

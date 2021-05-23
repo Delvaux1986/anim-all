@@ -19,7 +19,7 @@ class Animal extends Model
         'age',
         'gender',
         'status',
-        'specie_id',
+        'family_id',
         'img_url'
     ];
 
