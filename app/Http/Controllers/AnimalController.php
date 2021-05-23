@@ -59,9 +59,12 @@ class AnimalController extends Controller
      * @param  \App\Models\Animal  $animal
      * @return \Illuminate\Http\Response
      */
-    public function show(Animal $animal)
+    public function show( $id)
     {
-        //
+        $animal = Animal::with('stories','family')->find($id);
+        return Inertia::render('Animals/Show' , [
+            'animal' => $animal
+        ]);
     }
 
     /**

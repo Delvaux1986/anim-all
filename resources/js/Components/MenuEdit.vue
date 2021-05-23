@@ -2,7 +2,7 @@
     <div class="dropdown">
       <button class="dropbtn"><i class="fas fa-ellipsis-v"></i></button>
       <div class="dropdown-content">
-        <a href="#">Voir</a>
+        <a :href="showLink">Voir</a>
         <a href="#">Editer</a>
         <a href="#">Supprimer</a>
       </div>
@@ -12,7 +12,9 @@
 <script>
 export default {
   name : 'MenuEdit',
-
+  props : {
+    showLink : String,
+  },
   setup() {
     
   },

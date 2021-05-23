@@ -1,6 +1,7 @@
 <template>
     <jet-authentication-card>
-        
+        <Logo class="mb-2"></Logo>
+        <h2 class="text-pink  uppercase font-extrabold text-center">Se connecter</h2>
 
         <jet-validation-errors class="mb-4" />
 
@@ -47,6 +48,7 @@
     import JetCheckbox from '@/Jetstream/Checkbox'
     import JetLabel from '@/Jetstream/Label'
     import JetValidationErrors from '@/Jetstream/ValidationErrors'
+    import Logo from './../../Components/Logo'
 
     export default {
         components: {
@@ -56,7 +58,8 @@
             JetInput,
             JetCheckbox,
             JetLabel,
-            JetValidationErrors
+            JetValidationErrors,
+            Logo
         },
 
         props: {

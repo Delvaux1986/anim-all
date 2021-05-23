@@ -85,10 +85,10 @@ export default {
 
 <style>
     .v-sidebar-menu , .v-sidebar-menu .vsm--toggle-btn {
-        background-color: var(--color-primary);
+        background-color: #BA455A;
     }
     .v-sidebar-menu .vsm--arrow {
-        background-color: var(--color-primary);
+        background-color: #BA455A;
     }
     
 </style>

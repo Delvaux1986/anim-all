@@ -22,7 +22,7 @@ class CreateAnimalsTable extends Migration
             $table->string('img_url')->nullable();
             $table->string('status')->nullable();
             $table->boolean('feed')->default(0);
-            $table->unsignedBigInteger('specie_id')->constrained()->cascadeOnDelete();
+            $table->unsignedBigInteger('family_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

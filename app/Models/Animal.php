@@ -2,7 +2,10 @@
 
 namespace App\Models;
 
+use App\Models\Cage;
 use App\Models\Family;
+use App\Models\Storie;
+use App\Models\Adoptant;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 

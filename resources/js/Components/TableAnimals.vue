@@ -20,7 +20,10 @@
                 <th class="table-cell text-center">{{animal.age ? animal.age : 'N/A'}}</th>
                 <th class="table-cell text-left">{{animal.status ? animal.status : 'N/A'}}</th>
                 <th v-if="this.$inertia.page.url == this.editable && role=== 2 || this.$inertia.page.url == this.editable && role === 1 " class="table-cell ">
-                    <Menu-edit></Menu-edit>
+                    <Menu-edit 
+                    :showLink="'/animals/show/' + animal.id"
+                    >
+                    </Menu-edit>
                 </th>
             </tr>
         </tbody>

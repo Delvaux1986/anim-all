@@ -35,6 +35,7 @@ Route::get('/animals' , [DashboardController::class , 'animals'])->middleware(['
 Route::get('/animals/create' , [AnimalController::class , 'create'])->middleware(['auth:sanctum', 'verified'])->name('animals.create');
 Route::post('/uploadPhoto' , [FileController::class , 'storePhoto'])->middleware(['auth:sanctum', 'verified']);
 Route::post('/animals/store' , [AnimalController::class , 'store'])->middleware(['auth:sanctum', 'verified'])->name('animals.store');
+Route::get('/animals/show/{id}' , [AnimalController::class, 'show'])->middleware(['auth:sanctum', 'verified'])->name('animals.show');
 
 // DAHSBOARD TASK
 
