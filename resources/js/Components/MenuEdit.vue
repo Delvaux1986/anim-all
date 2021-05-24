@@ -9,7 +9,7 @@
     <div class="dropdown-content">
         <a v-if="showLink" :href="showLink">Voir</a>
         <a v-if="editLink" :href="editLink">Editer</a>
-        <a v-if="deleteLink"  @click="showModal()">Supprimer</a>
+        <a v-if="deleteLink" @click="showModal()">Supprimer</a>
     </div>
 </div>
 </template>
@@ -44,12 +44,12 @@ export default {
         closeWithAccept() {
             this.isModalVisible = false;
 
-            this.$inertia.delete(this.deleteLink , this.itemToDelete);
+            this.$inertia.delete(this.deleteLink, this.itemToDelete);
             this.$emit('reloadNeeded');
         }
     },
-    mounted(){
-        
+    mounted() {
+
     }
 }
 </script>

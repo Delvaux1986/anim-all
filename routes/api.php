@@ -1,10 +1,8 @@
 <?php
 
-use App\Http\Controllers\AnimalController;
-use App\Models\Animal;
 use App\Models\Family;
+use App\Models\Role;
 use App\Models\Task;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +27,10 @@ Route::get('/getAllTasks' , function (){
 
 Route::get('/getAllFamily' , function() {
     return Family::all();
+});
+
+Route::get('/getAllRole' , function() {
+    return Role::all();
 });
 
 

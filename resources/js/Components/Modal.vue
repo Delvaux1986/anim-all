@@ -51,17 +51,17 @@ export default {
     background: #FFFFFF;
     box-shadow: 2px 2px 20px 1px;
     overflow-x: auto;
+    overflow-y:auto ;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    height:20vh;
-    width:45%;
+    height: 20vh;
+    width: 45%;
     align-items: stretch;
 }
 
-.modal-header
-{
+.modal-header {
     padding: 15px;
 }
 
@@ -75,11 +75,12 @@ export default {
 .footerModal {
     border-top: 1px solid #eeeeee;
     padding: 15px;
-    display:flex;
-    flex-direction: row;    
+    display: flex;
+    flex-direction: row;
 }
-button{
-    width:50%;
+
+button {
+    width: 50%;
 }
 
 .modal-body {
@@ -89,14 +90,15 @@ button{
 
 .btn-green {
     color: white;
-    background: #4AAE9B;
-    border: 1px solid #4AAE9B;
+    background: var(--color-secondary);
+    border: 1px solid var(--color-primary);
     border-radius: 2px;
 }
+
 .btn-red {
     color: white;
-    background: #d13267;
-    border: 1px solid #4AAE9B;
+    background: var(--color-primary);
+    border: 1px solid var(--color-secondary);
     border-radius: 2px;
 }
 

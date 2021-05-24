@@ -31,7 +31,8 @@ class User extends Authenticatable
         'role_id',
         'workToday',
         'startWork',
-        'endWork'
+        'endWork',
+        'profile_photo_path'
     ];
 
     public function role(){

@@ -45,6 +45,7 @@ class AnimalController extends Controller
      */
     public function store(Request $request)
     {
+        
         $newRecord = Animal::create($request->all());
         // CREATE A STORY LIKE an animal has been registered
         Storie::create([
@@ -92,12 +93,13 @@ class AnimalController extends Controller
      */
     public function update(Request $request)
     {
-        
         $animal =  Animal::where('id' , $request->id)->first();
         // UNLINK OLD PHOTO
         $urlSplit = explode('/', $animal->img_url);
-        $filename = $urlSplit[3];
-        unlink(storage_path('app/public/uploads/'.$filename));
+        $filename = $urlSplit[4];
+        if($filename !== 'no-image.gif'){ // CHECK FOR NOT DELETE NO IMG GIF 
+            unlink(storage_path('app/public/uploads/animals/'.$filename));
+        }
         // NOW WE CAN UPDATE
         $animal->update($request->all());
         
@@ -122,6 +124,13 @@ class AnimalController extends Controller
             'animal_id' => $animal->id,
             'description' => $animal->name .' a été Supprimer par ' . Auth::user()->name
         ]);
+        // DELETE PHOTO OF THIS ANIMAL
+        $urlSplit = explode('/', $animal->img_url);
+        $filename = $urlSplit[4];
+        if($filename !== 'no-image.gif'){ // CHECK FOR NOT DELETE NO IMG GIF 
+            unlink(storage_path('app/public/uploads/animals/'.$filename));
+        }
+        
         Animal::destroy($animal->id);
         return Redirect::route('animals.index')->with('success', $animal->name .' a bien été supprimer de la base de donnée');
     }

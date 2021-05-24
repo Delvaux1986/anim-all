@@ -47,9 +47,12 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function show(User $user)
+    public function show($id)
     {
-        //
+        $user = User::with('role')->find($id);
+        return Inertia::render('Users/Show',[
+            'user' => $user
+        ]);
     }
 
     /**
@@ -58,9 +61,12 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function edit(User $user)
+    public function edit($id)
     {
-        //
+        $user = User::with('role')->find($id);
+        return Inertia::render('Users/Edit', [
+            'user' => $user
+        ]);
     }
 
     /**
