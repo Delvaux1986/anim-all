@@ -34,8 +34,10 @@
     </table>
     <div class="flex flex-row justify-center">
         <VueTailwindPagination id="pagination" :current="laravelData.current_page" :total="laravelData.total" :per-page="laravelData.per_page" @page-changed="getResults" />
+        
+        
     </div>
-    <div class="flex justify-center my-5 " v-if="this.$inertia.page.url == this.editable && role=== 2 || this.$inertia.page.url == this.editable && role === 1 ">
+    <div class="flex justify-center my-5 "  @click="createUser()" v-if="this.$inertia.page.url == this.editable && role=== 2 || this.$inertia.page.url == this.editable && role === 1 ">
         <div class="btn-send"><i class="fas fa-plus  p-3"></i></div>
     </div>
 </div>
@@ -49,12 +51,13 @@ import MenuEdit from './MenuEdit.vue'
 export default {
     components: {
         VueTailwindPagination,
-        MenuEdit
+        MenuEdit,
     },
     data() {
         return {
             laravelData: {},
             editable: '/users',
+            
         }
     },
     setup() {
@@ -62,6 +65,7 @@ export default {
     },
     mounted() {
         this.getResults();
+        
     },
     methods: {
         reloadComponent(){
@@ -75,8 +79,8 @@ export default {
                 this.laravelData = response.data;
             });
         },
-        reloadComponent() {
-            this.getResults();
+        createUser(){
+            this.$inertia.get('/users/create');
         }
     },
     props: {

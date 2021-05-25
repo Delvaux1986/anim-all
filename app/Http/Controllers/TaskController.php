@@ -21,6 +21,33 @@ class TaskController extends Controller
         return response()->json($data);
     }
     /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Task  $task
+     * @return \Illuminate\Http\Response
+     */
+    public function show( $id)
+    {
+        $task = Task::where('id' , $id)->first();
+        
+        return Inertia::render('Tasks/Show' , [
+            'task' => $task
+        ]);
+    }
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Task  $task
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $task = Task::where('id' , $id)->first();
+        return Inertia::render('Tasks/Edit', [
+            'task' => $task
+        ]);
+    }
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

@@ -27,7 +27,6 @@ export default {
     },
     mounted() {
         this.getTasks();
-        console.log(this.activeView)
     },
     props: {
         data: Array,

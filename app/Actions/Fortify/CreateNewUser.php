@@ -32,7 +32,7 @@ class CreateNewUser implements CreatesNewUsers
             'email' => $input['email'],
             'password' => Hash::make($input['password']),
             'role_id' => 5, // ROLE = OTHER
-            'profile_photo_path' => '/storage/uploads/no-image.gif'
+            'profile_photo_path' => '/storage/uploads/users/no-image.gif'
         ]);
     }
 }

@@ -19,7 +19,7 @@
                 <th class="table-cell text-right">{{task.end ? formatDate(task.end) : 'N/A'}}</th>
                 <th class="table-cell text-right">{{task.class ? task.class : 'N/A'}}</th>
                 <th v-if="this.$inertia.page.url == this.editable && role=== 2 || this.$inertia.page.url == this.editable && role === 1 " class="table-cell ">
-                    <Menu-edit></Menu-edit>
+                <Menu-edit :showLink="'/tasks/show/' + task.id" :editLink="'/tasks/edit/'+ task.id" :itemToDelete="task"></Menu-edit>
                 </th>
 
             </tr>
@@ -50,8 +50,6 @@ export default {
 
     },
     mounted() {
-        console.log(this.$inertia.page)
-        console.log(this.editable)
         this.getResults();
     },
     data() {

@@ -27,40 +27,49 @@ Route::get('/', [HomeController::class , 'index'])->name('home');
 
 
 // DASHBOARD SIDE FOR GESTION OF SPA 
-Route::get('/dashboard', [DashboardController::class , 'index'])->middleware(['auth:sanctum', 'verified'])->name('dashboard');
 
 // DASHBOARD ANIMALS 
+Route::middleware(['auth:sanctum', 'verified'])->group(function() {
+    //LANDING PAGE
+    Route::get('/dashboard', [DashboardController::class , 'index'])->name('dashboard');
 
-Route::get('/animals' , [DashboardController::class , 'animals'])->middleware(['auth:sanctum', 'verified'])->name('animals.index');
-Route::get('/animals/create' , [AnimalController::class , 'create'])->middleware(['auth:sanctum', 'verified'])->name('animals.create');
-Route::post('/uploadPhoto' , [FileController::class , 'storeAnimalPhoto'])->middleware(['auth:sanctum', 'verified']);
-Route::post('/animals/store' , [AnimalController::class , 'store'])->middleware(['auth:sanctum', 'verified'])->name('animals.store');
-Route::get('/animals/show/{id}' , [AnimalController::class, 'show'])->middleware(['auth:sanctum', 'verified'])->name('animals.show');
-Route::get('/animals/edit/{id}', [AnimalController::class, 'edit'])->middleware(['auth:sanctum', 'verified'])->name('animals.edit');
-Route::post('/animals/update', [AnimalController::class, 'update'])->middleware(['auth:sanctum', 'verified'])->name('animals.update');
-Route::delete('/animals/{animal}', [AnimalController::class, 'destroy'])->middleware(['auth:sanctum', 'verified'])->name('animals.delete');
-
-// DAHSBOARD TASK
-
-Route::get('/tasks' , [DashboardController::class , 'tasks'])->middleware(['auth:sanctum', 'verified'])->name('tasks.index');
-Route::get('/tasks/create' , [TaskController::class , 'create'])->middleware(['auth:sanctum', 'verified'])->name('tasks.create');
-Route::post('/tasks/store' , [TaskController::class , 'store'])->middleware(['auth:sanctum', 'verified'])->name('tasks.store');
-
-
-// DASHBOARD USERS@EMPLOYES
-Route::get('/users' , [DashboardController::class , 'users'])->middleware(['auth:sanctum', 'verified'])->name('employes.index');
-Route::get('/users/show/{id}' , [UserController::class, 'show'])->middleware(['auth:sanctum', 'verified'])->name('employes.show');
-Route::post('/uploadUserPhoto' , [FileController::class , 'storeUserPhoto'])->middleware(['auth:sanctum', 'verified']);
-Route::get('/users/edit/{id}' , [UserController::class , 'edit'])->middleware(['auth:sanctum', 'verified'])->name('employes.edit');
-Route::post('/users/update', [UserController::class, 'update'])->middleware(['auth:sanctum', 'verified'])->name('employes.update');
-Route::delete('/users/{user}', [UserController::class, 'destroy'])->middleware(['auth:sanctum', 'verified'])->name('employes.delete');
+    // ALL FOR ANIMALS
+    Route::get('/animals' , [DashboardController::class , 'animals'])->name('animals.index');
+    Route::get('/animals/create' , [AnimalController::class , 'create'])->name('animals.create');
+    Route::post('/uploadPhoto' , [FileController::class , 'storeAnimalPhoto']);
+    Route::post('/animals/store' , [AnimalController::class , 'store'])->name('animals.store');
+    Route::get('/animals/show/{id}' , [AnimalController::class, 'show'])->name('animals.show');
+    Route::get('/animals/edit/{id}', [AnimalController::class, 'edit'])->name('animals.edit');
+    Route::post('/animals/update', [AnimalController::class, 'update'])->name('animals.update');
+    Route::delete('/animals/{animal}', [AnimalController::class, 'destroy'])->name('animals.delete');
+    
+    // ALL FOR TASKS
+    
+    Route::get('/tasks' , [DashboardController::class , 'tasks'])->name('tasks.index');
+    Route::get('/tasks/create' , [TaskController::class , 'create'])->name('tasks.create');
+    Route::post('/tasks/store' , [TaskController::class , 'store'])->name('tasks.store');
+    Route::get('/tasks/show/{id}' , [TaskController::class, 'show'])->name('tasks.show');
+    Route::get('/tasks/edit/{id}', [TaskController::class, 'edit'])->name('tasks.edit');
+    
+    
+    // ALL FOR USERS@EMPLOYES
+    Route::get('/users' , [DashboardController::class , 'users'])->name('employes.index');
+    Route::get('/users/create' , [UserController::class , 'create'])->name('employes.create');
+    Route::get('/users/show/{id}' , [UserController::class, 'show'])->name('employes.show');
+    Route::post('/uploadUserPhoto' , [FileController::class , 'storeUserPhoto']);
+    Route::get('/users/edit/{id}' , [UserController::class , 'edit'])->name('employes.edit');
+    Route::post('/users/update', [UserController::class, 'update'])->name('employes.update');
+    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('employes.delete');
+    
+    
+    Route::get('/getAllAnimals' , [AnimalController::class , 'index']);
+    Route::get('/getAllUsers', [UserController::class, 'index']);
+    Route::get('/getAllTasksforTable', [TaskController::class, 'index']);
+});
 
 
 // ROUTE OF COMPONENTS TABLE
 
-Route::get('/getAllAnimals' , [AnimalController::class , 'index'])->middleware(['auth:sanctum', 'verified']);
-Route::get('/getAllUsers', [UserController::class, 'index'])->middleware(['auth:sanctum', 'verified']);
-Route::get('/getAllTasksforTable', [TaskController::class, 'index'])->middleware(['auth:sanctum', 'verified']);
 
 // LOGOUT 
 Route::get('/logout' , 'Laravel\Fortify\Http\Controllers\AuthenticatedSessionController@destroy');

@@ -3,7 +3,7 @@
 <div class="flex flex-col justify-center items-center bg-white w-screen">
     <h1 class="text-pink text-3xl my-3 uppercase font-extrabold">Tâches :</h1>
     <Calendar></Calendar>
-    <div class="flex flex-col justify-center items-center w-4/5">
+    <div class="flex flex-col justify-center items-center w-full">
         <h2 class="text-pink text-3xl my-6 uppercase font-extrabold text-center">Personnel</h2>
         <Table-users class="self-center" style="width:100%;"></Table-users>
     </div>
