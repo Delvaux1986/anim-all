@@ -31,7 +31,7 @@
                 <option value="walking">Promenade</option>
             </select>
         </div>
-        <input type="submit" value="créer" class="focus:outline-none">
+        <input type="submit" value="créer" class="focus:outline-none btn-base">
     </form>
 
 </div>

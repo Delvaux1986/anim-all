@@ -50,6 +50,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     Route::post('/tasks/store' , [TaskController::class , 'store'])->name('tasks.store');
     Route::get('/tasks/show/{id}' , [TaskController::class, 'show'])->name('tasks.show');
     Route::get('/tasks/edit/{id}', [TaskController::class, 'edit'])->name('tasks.edit');
+    Route::post('/tasks/update', [TaskController::class, 'update'])->name('tasks.update');
     
     
     // ALL FOR USERS@EMPLOYES

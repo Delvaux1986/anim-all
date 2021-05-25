@@ -48,7 +48,7 @@
                     <option value="1">Oui</option>
                 </select>
             </div>
-            <input type="submit" value="Modifier" class="focus:outline-none">
+            <input type="submit" value="Modifier" class="focus:outline-none btn-base">
         </form>
     </div>
 </div>

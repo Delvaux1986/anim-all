@@ -37,7 +37,7 @@
 <script>
 import axios from 'axios'
 import VueTailwindPagination from '@ocrv/vue-tailwind-pagination'
-import moment from 'moment';
+import moment from 'moment'
 import MenuEdit from './MenuEdit'
 
 export default {

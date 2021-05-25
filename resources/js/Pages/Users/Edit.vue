@@ -37,7 +37,7 @@
             <label for="endWork" class="block text-gray-700 text-sm font-bold mb-2">Fin du travail :</label>
             <input class="shadow appearance-none border rounded w-6/12 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="endWork" name="endWork" type="time" v-model="form.endWork">
         </div>
-        <input type="submit" value="Modifier" class="focus:outline-none">
+        <input type="submit" value="Modifier" class="focus:outline-none btn-base">
     </form>
 </div>
 </template>

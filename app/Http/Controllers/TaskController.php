@@ -48,6 +48,18 @@ class TaskController extends Controller
         ]);
     }
     /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\Animal  $animal
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request)
+    {
+       Task::where('id', $request->id)->first()->update($request->all());
+       return Redirect::route('tasks.show', $request->id)->with('success' , $request->title .' a bien été Modifié');
+    }
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

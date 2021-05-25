@@ -1,6 +1,6 @@
 <template>
     <div v-if="$page.props.flash.success" class="flashSucces">
-    {{ $page.props.flash.success }}
+        {{ $page.props.flash.success }}
     </div>
     <div class="w-screen min-h-screen bg-white flex flex-col justify-center items-center">
     <Menu></Menu>

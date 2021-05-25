@@ -26,6 +26,25 @@
     cursor:pointer;
 }
 
+.btn-base{
+    width:80px;
+    height:40px;
+    -webkit-border-radius: 50px; 
+    border-radius: 50px; 
+    background: var(--color-primary);
+    color: var(--color-white);
+    -webkit-box-shadow: 12px 12px 24px #b2b8c9,
+    -12px -12px 24px #f0f8ff;
+    box-shadow: 12px 12px 24px #b2b8c9,
+    -12px -12px 24px #f0f8ff;
+    transition: all 0.1s ease-in-out;
+    opacity:0.5;
+}
+
+.btn-base:hover{
+    opacity:1;
+}
+
 .flashSucces
 {
     display:flex;

@@ -20,7 +20,7 @@ class CreateTasksTable extends Migration
             $table->string('title');
             $table->string('icon')->nullable();
             $table->string('content');
-            $table->longText('contentFull');
+            $table->longText('contentFull')->nullable();
             $table->string('class');
             $table->timestamps();
         });
