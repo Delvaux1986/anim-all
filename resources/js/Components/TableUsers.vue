@@ -3,6 +3,7 @@
     <table class="table  bg-white p-1 w-4/5">
         <thead class="table-row-group  text-green text-2xl ">
             <tr class="table-row py-2">
+                <th class="table-cell text-left">Photo</th>
                 <th class="table-cell text-left">Nom</th>
                 <th class="table-cell text-left">Mail</th>
                 <th class="table-cell text-left">Rôle</th>
@@ -14,6 +15,7 @@
         </thead>
         <tbody class="table-row-group">
             <tr v-for="(user,id) in this.laravelData.data" :key="id">
+                <th class="table-cell  text-left" :v-if="user.profile_photo_path"><img :src="user.profile_photo_path" style="width:70px;height:75px;"></th>
                 <th class="table-cell text-left">{{user.name ? user.name : 'N/A'}}</th>
                 <th class="table-cell text-left">{{user.email ? user.email : 'N/A'}}</th>
                 <th class="table-cell text-left">{{user.role ? user.role.name : 'N/A'}}</th>
@@ -24,6 +26,7 @@
                     <Menu-edit 
                     :showLink="'/users/show/' + user.id"
                     :editLink="'/users/edit/' + user.id"
+                    :deleteLink="'/users/' + user.id"
                     :itemToDelete="user" @reloadNeeded="reloadComponent()"></Menu-edit>
                 </th>
             </tr>
@@ -59,11 +62,11 @@ export default {
     },
     mounted() {
         this.getResults();
-        console.log(this.$inertia.page.url === this.editable)
-        // console.log(this.editable)
     },
     methods: {
-
+        reloadComponent(){
+            this.getResults();
+        },
         getResults(page = 1) { // PAGINATION
             if (typeof page === 'undefined') {
                 page = 1;

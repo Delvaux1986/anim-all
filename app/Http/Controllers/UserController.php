@@ -6,6 +6,7 @@ use App\Models\User;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
 {
@@ -78,7 +79,14 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+       $user = User::where('id' , $request->id)->first();
+       $urlSplit = explode('/', $user->profile_photo_path);
+       $filename = $urlSplit[4];
+       if($filename !== 'no-image.gif'){ // CHECK FOR NOT DELETE NO IMG GIF 
+        unlink(storage_path('app/public/uploads/users/'.$filename));
+        }
+       $user->update($request->all());
+       return Redirect::route('employes.show', $user->id)->with('success' , $user->name .' a bien été Modifié');
     }
 
     /**
@@ -89,6 +97,13 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        // DELETE PHOTO OF THIS ANIMAL
+        $urlSplit = explode('/', $user->profile_photo_path);
+        $filename = $urlSplit[4];
+        if($filename !== 'no-image.gif'){ // CHECK FOR NOT DELETE NO IMG GIF 
+            unlink(storage_path('app/public/uploads/users/'.$filename));
+        }
+        User::destroy($user->id);
+        return Redirect::route('employes.index')->with('success', $user->name .' a bien été supprimer de la base de donnée');
     }
 }

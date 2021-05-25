@@ -52,6 +52,8 @@ Route::get('/users' , [DashboardController::class , 'users'])->middleware(['auth
 Route::get('/users/show/{id}' , [UserController::class, 'show'])->middleware(['auth:sanctum', 'verified'])->name('employes.show');
 Route::post('/uploadUserPhoto' , [FileController::class , 'storeUserPhoto'])->middleware(['auth:sanctum', 'verified']);
 Route::get('/users/edit/{id}' , [UserController::class , 'edit'])->middleware(['auth:sanctum', 'verified'])->name('employes.edit');
+Route::post('/users/update', [UserController::class, 'update'])->middleware(['auth:sanctum', 'verified'])->name('employes.update');
+Route::delete('/users/{user}', [UserController::class, 'destroy'])->middleware(['auth:sanctum', 'verified'])->name('employes.delete');
 
 
 // ROUTE OF COMPONENTS TABLE
