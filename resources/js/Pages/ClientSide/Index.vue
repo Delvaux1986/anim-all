@@ -1,6 +1,6 @@
 <template>
     <app-layout>
-    <div >
+    <div>
         <a href="/login">Connecter</a>
         <a href="/register">S'enregister</a>
         <a href="/logout">DECO</a>

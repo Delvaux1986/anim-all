@@ -95,7 +95,7 @@ export default {
                         console.log(error.response.data.errors);
                     })
             }else{
-                this.form.img_url = '/storage/uploads/animals/no-image.gif'
+                this.form.img_url = 'no-image.gif'
                 this.$inertia.post('/animals/store', this.form)
             }
 

@@ -5,7 +5,7 @@
     <form class="w-3/6" @submit.prevent="submit">
         <div class="absolute -right-0 overflow-hidden mt-5 flex flex-col items-center" style="margin-right:25%;">
             <label for="profile_photo_path" class="block text-gray-700 text-sm font-bold mb-2">Photo :</label>
-            <img :src="form.profile_photo_path" style="width:350px;height:350px;">
+            <img :src="'../../Images/users/'+form.profile_photo_path" style="width:350px;height:350px;">
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="profile_photo_path" name="profile_photo_path" type="file" accept=".png, .jpg, .jpeg , .png" @change="selectPhoto">
         </div>
         <div class="mb-4">
@@ -70,20 +70,25 @@ export default {
     },
     methods: {
         submit() {
-            let data = new FormData();
-            data.append("file", this.file);
-            const config = {
-                headers: {
-                    'content-type': 'multipart/form-data'
+            if(this.file){
+                let data = new FormData();
+                data.append("file", this.file);
+                const config = {
+                    headers: {
+                        'content-type': 'multipart/form-data'
+                    }
                 }
+                axios.post('/uploadUserPhoto', data, config).then((response) => {
+                        this.form.profile_photo_path = response.data;
+                        this.$inertia.post('/users/update', this.form)
+                    })
+                    .catch((error) => {
+                        console.log(error.response.data.errors);
+                    })
+            }else{
+                this.form.profile_photo_path = 'no-image.gif'
+                this.$inertia.post('/users/update', this.form)
             }
-            axios.post('/uploadUserPhoto', data, config).then((response) => {
-                    this.form.profile_photo_path = response.data;
-                    this.$inertia.post('/users/update', this.form)
-                })
-                .catch((error) => {
-                    console.log(error.response.data.errors);
-                });
         },
         getAllRole() {
             axios.get('/api/getAllRole').then((response) => {

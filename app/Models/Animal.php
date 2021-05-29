@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Animal extends Model
 {
     use HasFactory;
-
+    protected $primaryKey = "id";
     protected $fillable = [
         'name',
         'race',
@@ -36,6 +36,6 @@ class Animal extends Model
     }
 
     public function cage(){
-        return $this->hasOne(Cage::class);
+        return $this->belongsTo(Cage::class);
     }
 }

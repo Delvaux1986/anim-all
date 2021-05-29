@@ -95,10 +95,10 @@ class AnimalController extends Controller
     {
         $animal =  Animal::where('id' , $request->id)->first();
         // UNLINK OLD PHOTO
-        $urlSplit = explode('/', $animal->img_url);
-        $filename = $urlSplit[4];
-        if($filename !== 'no-image.gif'){ // CHECK FOR NOT DELETE NO IMG GIF 
-            unlink(storage_path('app/public/uploads/animals/'.$filename));
+       
+        
+        if($animal->img_url !== 'no-image.gif'){ // CHECK FOR NOT DELETE NO IMG GIF 
+            unlink(public_path('/Images/animaux/'.$animal->img_url));
         }
         // NOW WE CAN UPDATE
         $animal->update($request->all());
@@ -125,10 +125,9 @@ class AnimalController extends Controller
             'description' => $animal->name .' a été Supprimer par ' . Auth::user()->name
         ]);
         // DELETE PHOTO OF THIS ANIMAL
-        $urlSplit = explode('/', $animal->img_url);
-        $filename = $urlSplit[4];
-        if($filename !== 'no-image.gif'){ // CHECK FOR NOT DELETE NO IMG GIF 
-            unlink(storage_path('app/public/uploads/animals/'.$filename));
+        
+        if($animal->img_url !== 'no-image.gif'){ // CHECK FOR NOT DELETE NO IMG GIF 
+            unlink(public_path('/Images/animaux/'.$animal->img_url));
         }
         
         Animal::destroy($animal->id);

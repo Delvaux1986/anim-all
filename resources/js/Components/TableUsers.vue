@@ -15,7 +15,7 @@
         </thead>
         <tbody class="table-row-group">
             <tr v-for="(user,id) in this.laravelData.data" :key="id">
-                <th class="table-cell  text-left" :v-if="user.profile_photo_path"><img :src="user.profile_photo_path" style="width:70px;height:75px;"></th>
+                <th class="table-cell  text-left" :v-if="user.profile_photo_path"><img :src="'Images/users/' +user.profile_photo_path" style="width:70px;height:75px;" :alt="'Photo from ' +user.name"></th>
                 <th class="table-cell text-left">{{user.name ? user.name : 'N/A'}}</th>
                 <th class="table-cell text-left">{{user.email ? user.email : 'N/A'}}</th>
                 <th class="table-cell text-left">{{user.role ? user.role.name : 'N/A'}}</th>

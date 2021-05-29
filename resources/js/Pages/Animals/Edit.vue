@@ -6,7 +6,7 @@
         <form class="w-3/6" @submit.prevent="submit">
             <div class="absolute -right-0 overflow-hidden mt-5 flex flex-col items-center" style="margin-right:25%;">
                 <label for="img_url" class="block text-gray-700 text-sm font-bold mb-2">Photo :</label>
-                <img :src="form.img_url" style="width:350px;height:350px;">
+                <img :src="'../../Images/animaux/'+form.img_url" style="width:350px;height:350px;">
                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="img_url" name="img_url" type="file" accept=".png, .jpg, .jpeg , .png" @change="selectPhoto">
             </div>
             <div class="mb-4">
@@ -96,20 +96,25 @@ export default {
             this.file = e.target.files[0]
         },
         submit() {
-            let data = new FormData();
-            data.append("file", this.file);
-            const config = {
-                headers: {
-                    'content-type': 'multipart/form-data'
+            if(this.file){
+                let data = new FormData();
+                data.append("file", this.file);
+                const config = {
+                    headers: {
+                        'content-type': 'multipart/form-data'
+                    }
                 }
+                axios.post('/uploadPhoto', data, config).then((response) => {
+                        this.form.img_url = response.data;
+                        this.$inertia.post('/animals/update', this.form)
+                    })
+                    .catch((error) => {
+                        console.log(error.response.data.errors);
+                    })
+            }else{
+                this.animal.img_url = 'no-image.gif'
+                this.$inertia.post('/animals/update', this.form)
             }
-            axios.post('/uploadPhoto', data, config).then((response) => {
-                    this.form.img_url = response.data;
-                    this.$inertia.post('/animals/update', this.form)
-                })
-                .catch((error) => {
-                    console.log(error.response.data.errors);
-                });
 
         }
     },

@@ -34,6 +34,7 @@ class User extends Authenticatable
         'endWork',
         'profile_photo_path'
     ];
+    protected $primaryKey = "id";
 
     public function role(){
         return $this->belongsTo(Role::class);

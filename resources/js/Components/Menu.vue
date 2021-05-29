@@ -33,6 +33,11 @@ export default {
                     icon: 'fas fa-paw'
                 },
                 {
+                    href: '/cages',
+                    title: 'Cages',
+                    icon: 'fas fa-bone'
+                },
+                {
                     href: '/tasks',
                     title: 'Tâches',
                     icon: 'fas fa-tasks'

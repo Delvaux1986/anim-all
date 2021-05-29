@@ -16,12 +16,13 @@ class CreateCagesTable extends Migration
         Schema::create('cages', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('area')->nullable(); 
+            $table->string('type')->nullable();
+            $table->string('img_url')->nullable(); 
             $table->time('lunchtimeFirst')->nullable();
             $table->boolean('checkFirstLunchtime')->nullable();
             $table->time('lunchtimeTwo')->nullable();
             $table->boolean('checkSecondLunchtime')->nullable();
-            $table->boolean('occuped')->default(0);
+            $table->boolean('IsOccuped')->default(0);
             $table->timestamps();
         });
     }

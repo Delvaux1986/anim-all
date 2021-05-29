@@ -33,4 +33,10 @@ class DashboardController extends Controller
             'role' => $roleUser
         ]);
     }
+    public function cages(){
+        $roleUser = Auth::user()->role_id;
+        return Inertia::render('Cages/Index',[
+            'role' => $roleUser
+        ]);
+    }
 }

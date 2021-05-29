@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AnimalController;
+use App\Http\Controllers\CageController;
 use App\Http\Controllers\DashboardController;
 
 /*
@@ -61,11 +62,15 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     Route::get('/users/edit/{id}' , [UserController::class , 'edit'])->name('employes.edit');
     Route::post('/users/update', [UserController::class, 'update'])->name('employes.update');
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('employes.delete');
-    
-    
+    // ALL FOR CAGES
+    Route::get('/cages' , [DashboardController::class, 'cages'])->name('cages.index');
+
+
+    // CALL FOR TABLE
     Route::get('/getAllAnimals' , [AnimalController::class , 'index']);
     Route::get('/getAllUsers', [UserController::class, 'index']);
     Route::get('/getAllTasksforTable', [TaskController::class, 'index']);
+    Route::get('/getAllCages' , [CageController::class, 'index']);
 });
 
 

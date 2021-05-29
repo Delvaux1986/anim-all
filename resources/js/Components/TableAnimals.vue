@@ -13,7 +13,8 @@
     </thead>
     <tbody class="table-row-group">
         <tr v-for="(animal,id) in laravelData.data" :key="id">
-            <th class="table-cell  text-left" :v-if="animal.img_url"><img :src="animal.img_url" style="width:70px;height:75px;"></th>
+
+            <th class="table-cell  text-left" :v-if="animal.img_url"><img :src="'Images/animaux/'+animal.img_url" style="width:70px;height:75px;" :alt="animal.name"></th>
             <th class="table-cell text-left">{{animal.name ? animal.name : 'N/A'}}</th>
             <th class="table-cell text-left">{{animal.race ? animal.race : 'N/A'}}</th>
             <th class="table-cell text-left">{{animal.gender ? animal.gender : 'N/A'}}</th>
@@ -71,7 +72,8 @@ export default {
         },
         reloadComponent() {
             this.getResults();
-        }
+        },
+        
     },
     mounted() {
         this.getResults();

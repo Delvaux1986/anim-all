@@ -8,14 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Cage extends Model
 {
     use HasFactory;
-
     protected $fillable = [
         'name',
-        'area',
-        'occuped'
+        'type',
+        'IsOccuped',
+        'img_url',
+        'lunchtimeFirst',
+        'checkFirstLunchtime',
+        'lunchtimeTwo',
+        'checkSecondLunchtime',
     ];
 
     public function animals(){
-        return $this->belongsToMany(Animal::class);
+        return $this->hasMany(Animal::class);
     }
 }

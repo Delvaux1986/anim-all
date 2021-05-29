@@ -16,13 +16,13 @@ class FileController extends Controller
          $fileUpload = new FileUpload;
          if($request->file()) {
             $file_name = time().'_'.$request->file->getClientOriginalName();
-            $file_path = $request->file('file')->storeAs('uploads/animals', $file_name, 'public');
+            $file_path = $request->file('file')->move(public_path('Images/animaux'), $file_name);
 
             $fileUpload->name = time().'_'.$request->file->getClientOriginalName();
-            $fileUpload->path = '/storage/' . $file_path;
+            $fileUpload->path = $file_path;
             $fileUpload->save();
 
-            return $fileUpload->path;
+            return $fileUpload->name;
         }
 
    }
@@ -35,13 +35,13 @@ class FileController extends Controller
      $fileUpload = new FileUpload;
      if($request->file()) {
         $file_name = time().'_'.$request->file->getClientOriginalName();
-        $file_path = $request->file('file')->storeAs('uploads/users', $file_name, 'public');
+        $file_path = $request->file('file')->move(public_path('Images/users'), $file_name);
 
         $fileUpload->name = time().'_'.$request->file->getClientOriginalName();
-        $fileUpload->path = '/storage/' . $file_path;
+        $fileUpload->path =  $file_path;
         $fileUpload->save();
 
-        return $fileUpload->path;
+        return $fileUpload->name;
         }
     }
 }

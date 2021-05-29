@@ -23,6 +23,7 @@ class CreateAnimalsTable extends Migration
             $table->string('status')->nullable();
             $table->boolean('feed')->default(0);
             $table->unsignedBigInteger('family_id')->constrained()->cascadeOnDelete();
+            $table->unsignedBigInteger('cage_id')->cascadeOnDelete()->default(0);
             $table->timestamps();
         });
     }

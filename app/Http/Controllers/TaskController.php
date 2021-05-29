@@ -78,7 +78,6 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         Task::create($request->all());
-
         return Redirect::route('tasks.index')->with('success', 'Tâche bien enregistré');
     }
 }
