@@ -57,9 +57,5 @@ export default {
 </script>
 
 <style>
-.animalCard {
-    background: -webkit-linear-gradient(77deg, rgb(186, 69, 90), rgb(93, 176, 161));
-    background: linear-gradient(77deg, rgb(186, 69, 90), rgb(93, 176, 161));
-    color: white;
-}
+
 </style>

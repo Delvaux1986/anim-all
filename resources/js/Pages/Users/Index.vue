@@ -19,8 +19,8 @@ export default {
         Menu,
         TableUsers
     },
-    setup() {
-        
+    mounted() {
+        console.log(this.role)
     },
     props:{
         role : Number,
@@ -29,15 +29,5 @@ export default {
 </script>
 
 <style>
-    .flashSucces{
-        display:flex;
-        width:100%;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 5px 15px;
-        font-size: 28px;
-        color:#BA455A;
-        background-color: rgba(64, 224, 208, 0.397);
-    }
+    
 </style>

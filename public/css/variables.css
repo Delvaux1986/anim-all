@@ -44,7 +44,7 @@
 .btn-base:hover{
     opacity:1;
 }
-
+/* FLASH SUCCES */
 .flashSucces
 {
     display:flex;
@@ -56,4 +56,60 @@
     font-size: 28px;
     color:#BA455A;
     background-color: rgba(64, 224, 208, 0.397);
+}
+/* TABLE DISPLAY */
+table {
+    font-family: 'Roboto Mono', monospace;
+    width: 80%;
+    margin: auto auto;
+}
+
+thead {
+    border-bottom: var(--color-primary) 1px solid;
+}
+
+#pagination section {
+    border: none;
+
+}
+
+#pagination section div div {
+    /* display:none; */
+
+    margin: auto auto;
+    border: none;
+    outline: none;
+
+}
+
+#pagination section ul li a div:hover {
+    background-color: var(--color-primary) !important;
+}
+
+/* SHOW CARDS  */
+/* ANIMAL */
+.animalCard {
+    background: -webkit-linear-gradient(77deg, rgb(186, 69, 90), rgb(93, 176, 161));
+    background: linear-gradient(77deg, rgb(186, 69, 90), rgb(93, 176, 161));
+    color: white;
+}
+/* USER */
+.userCard{
+    color: white;
+    background: -webkit-linear-gradient(83deg, rgb(79, 69, 186), rgb(93, 176, 161));
+    background: linear-gradient(83deg, rgb(79, 69, 186), rgb(93, 176, 161));
+
+}
+/* TASK */
+.taskCard
+{
+    color:white;
+    background:black;
+}
+.cageCard
+{   
+    background: -webkit-linear-gradient(-17deg, rgb(186, 69, 90), rgb(93, 176, 161));
+    background: linear-gradient(-17deg, rgb(186, 69, 90), rgb(93, 176, 161));
+    color:white;
+
 }

@@ -64,6 +64,13 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function() {
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('employes.delete');
     // ALL FOR CAGES
     Route::get('/cages' , [DashboardController::class, 'cages'])->name('cages.index');
+    Route::get('/cages/create' , [CageController::class , 'create'])->name('cages.create');
+    Route::get('/cages/show/{id}' , [CageController::class, 'show'])->name('cages.show');
+    Route::post('/uploadCagePhoto' , [FileController::class , 'storeCagePhoto']);
+    Route::post('/cages/store' , [CageController::class , 'store'])->name('cages.store');
+    Route::get('/cages/edit/{id}' , [CageController::class , 'edit'])->name('cages.edit');
+    Route::post('/cages/update', [CageController::class, 'update'])->name('cages.update');
+    Route::delete('/cages/{user}', [CageController::class, 'destroy'])->name('cages.delete');
 
 
     // CALL FOR TABLE

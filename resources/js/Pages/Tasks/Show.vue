@@ -40,9 +40,5 @@ export default {
 </script>
 
 <style>
-    .taskCard
-    {
-        color:white;
-        background:black;
-    }
+    
 </style>

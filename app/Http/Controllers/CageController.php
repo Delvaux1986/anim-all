@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cage;
+use Inertia\Inertia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class CageController extends Controller
 {
@@ -25,7 +27,7 @@ class CageController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('Cages/Create');
     }
 
     /**
@@ -36,7 +38,8 @@ class CageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Cage::create($request->all());
+        return Redirect::route('cages.index')->with('success' , 'Cage bien enregistré');
     }
 
     /**
@@ -45,9 +48,12 @@ class CageController extends Controller
      * @param  \App\Models\Cage  $cage
      * @return \Illuminate\Http\Response
      */
-    public function show(Cage $cage)
+    public function show($id)
     {
-        //
+        $cage = Cage::with('animals')->find($id);
+        return Inertia::render('Cages/Show', [
+            'cage' => $cage
+        ]);
     }
 
     /**
@@ -56,9 +62,12 @@ class CageController extends Controller
      * @param  \App\Models\Cage  $cage
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cage $cage)
+    public function edit($id)
     {
-        //
+        $cage = Cage::with('animals')->find($id);
+        return Inertia::render('Cages/Show', [
+            'cage' => $cage
+        ]);
     }
 
     /**

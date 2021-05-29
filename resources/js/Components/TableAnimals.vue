@@ -82,31 +82,5 @@ export default {
 </script>
 
 <style lang="css">
-table {
-    font-family: 'Roboto Mono', monospace;
-    width: 80%;
-    margin: auto auto;
-}
 
-thead {
-    border-bottom: var(--color-primary) 1px solid;
-}
-
-#pagination section {
-    border: none;
-
-}
-
-#pagination section div div {
-    /* display:none; */
-
-    margin: auto auto;
-    border: none;
-    outline: none;
-
-}
-
-#pagination section ul li a div:hover {
-    background-color: var(--color-primary) !important;
-}
 </style>

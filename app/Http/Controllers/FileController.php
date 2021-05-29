@@ -44,4 +44,22 @@ class FileController extends Controller
         return $fileUpload->name;
         }
     }
+    public function storeCagePhoto(Request $request){
+        
+        $request->validate([
+            'file' => 'required|mimes:jpg,jpeg,png,csv,txt,xlx,xls,pdf|max:2048'
+         ]);
+    
+         $fileUpload = new FileUpload;
+         if($request->file()) {
+            $file_name = time().'_'.$request->file->getClientOriginalName();
+            $file_path = $request->file('file')->move(public_path('Images/cages'), $file_name);
+    
+            $fileUpload->name = time().'_'.$request->file->getClientOriginalName();
+            $fileUpload->path =  $file_path;
+            $fileUpload->save();
+    
+            return $fileUpload->name;
+            }
+        }
 }

@@ -49,10 +49,5 @@ import moment from 'moment'
 </script>
 
 <style>
-    .userCard{
-        color: white;
-        background: -webkit-linear-gradient(83deg, rgb(79, 69, 186), rgb(93, 176, 161));
-        background: linear-gradient(83deg, rgb(79, 69, 186), rgb(93, 176, 161));
-
-    }
+    
 </style>

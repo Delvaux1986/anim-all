@@ -39,7 +39,7 @@ export default {
         },
         closeModalWithoutAccept() {
             this.isModalVisible = false;
-            this.$inertia.get('/animals');
+            this.$inertia.get(this.$inertia.page.url);
         },
         closeWithAccept() {
             this.isModalVisible = false;
@@ -49,7 +49,7 @@ export default {
         }
     },
     mounted() {
-
+        
     }
 }
 </script>
